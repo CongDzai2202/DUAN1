@@ -22,6 +22,7 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         [StringLength(50)]
         public string DONVITINH { get; set; }
+        public bool? TRANGTHAI { get; set; }
 
     }
 }

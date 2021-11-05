@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1_DAL_DataAccesLayer.DatabaseContext;
 
 namespace _1_DAL_DataAccesLayer.Migrations
 {
     [DbContext(typeof(DatabaseContext1))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211105083315_CONG3")]
+    partial class CONG3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,9 +179,6 @@ namespace _1_DAL_DataAccesLayer.Migrations
                     b.Property<string>("THONGTINHANGHOAMATHONGTIN")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<bool?>("TRANGTHAI")
-                        .HasColumnType("bit");
-
                     b.Property<float>("TRONGLUONG")
                         .HasColumnType("real");
 
@@ -206,9 +205,6 @@ namespace _1_DAL_DataAccesLayer.Migrations
 
                     b.Property<string>("THONGTINHANGHOAMATHONGTIN")
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool?>("TRANGTHAI")
-                        .HasColumnType("bit");
 
                     b.HasKey("MALOAIHANG");
 
