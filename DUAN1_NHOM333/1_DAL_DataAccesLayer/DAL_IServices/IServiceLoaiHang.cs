@@ -7,7 +7,7 @@ using _1_DAL_DataAccesLayer.Entities;
 
 namespace _1_DAL_DataAccesLayer.DAL_IServices
 {
-    public interface IServiceTheLoai
+    public interface IServiceLoaiHang
     {
         public string ThemLH(LOAIHANG lh);
         public string SuaLH(LOAIHANG lh);
