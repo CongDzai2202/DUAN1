@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_2_BUS_BusinessLayer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BUS_Models\" />
+    <Folder Include="BUS_IServices\" />
+    <Folder Include="BUS_Services\" />
+    <Folder Include="BUS_Utilities\" />
+  </ItemGroup>
+
+</Project>

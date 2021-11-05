@@ -1,0 +1,15 @@
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.deps.json
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.runtimeconfig.json
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.runtimeconfig.dev.json
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\ref\1_DAL_DataAccesLayer.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.pdb
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.csproj.AssemblyReference.cache
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.AssemblyInfoInputs.cache
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.AssemblyInfo.cs
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.csproj.CoreCompileInputs.cache
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\ref\1_DAL_DataAccesLayer.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.pdb
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\1_DAL_DataAccesLayer\obj\Debug\net5.0\1_DAL_DataAccesLayer.genruntimeconfig.cache
