@@ -22,11 +22,8 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         public double DONGIA { get; set; }
         [Required]
-        public bool TRANGTHAI { get; set; }
-        // [ForeignKey("MAPHIEUNHAP")]
-        // public PHIEUNHAP MAPHIEUNHAP { get; set; }
-        // [ForeignKey("MATHONGTIN")]
-        // public THONGTINHANGHOA MATHONGTIN { get; set; }
+        public int? TRANGTHAI { get; set; }
+      
         public ICollection<PHIEUNHAP> Phieunhaps { get; set; }
         public ICollection<THONGTINHANGHOA> Thongtinhanghoas { get; set; }
         public CHITIETPHIEUNHAP()

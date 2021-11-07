@@ -22,7 +22,7 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         public int SOLUONG { get; set; }
         [Required]
-        public bool? TRANGTHAI { get; set; }
+        public int? TRANGTHAI { get; set; }
         [Required]
         [StringLength(50)]
         public string BARCODE { get; set; }

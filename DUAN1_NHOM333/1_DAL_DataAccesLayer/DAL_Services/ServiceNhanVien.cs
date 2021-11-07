@@ -36,7 +36,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaNV(NHANVIEN nv)
         {
-            nv.TRANGTHAI = false;
+            nv.TRANGTHAI = 1;
             if (_dbContext.NHANVIENS.ToList().Any(c => c.MANHANVIEN == nv.MANHANVIEN))
             {
                 _dbContext.NHANVIENS.Update(nv);

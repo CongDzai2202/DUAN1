@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaHD(HOADON hd)
         {
-            hd.TRANGTHAI = false;
+            hd.TRANGTHAI = 1;
             if (_dbContext.HOADONS.ToList().Any(c => c.MAHOADON == hd.MAHOADON))
             {
                 _dbContext.HOADONS.Update(hd);

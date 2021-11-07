@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaPN(PHIEUNHAP pn)
         {
-            pn.TRANGTHAI = false;
+            pn.TRANGTHAI = 1;
             if (_dbContext.PHIEUNHAPS.ToList().Any(c => c.MAPHIEUNHAP == pn.MAPHIEUNHAP))
             {
                 _dbContext.PHIEUNHAPS.Update(pn);

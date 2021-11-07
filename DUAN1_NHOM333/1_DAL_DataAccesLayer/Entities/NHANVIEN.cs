@@ -35,7 +35,7 @@ namespace _1_DAL_DataAccesLayer.Entities
         [StringLength(50)]
         public string MATKHAU { get; set; }
         [Required]
-        public bool? TRANGTHAI { get; set; }
+        public int? TRANGTHAI { get; set; }
 
         [ForeignKey("MACHUCVU")]
         public string MACHUCVU { get; set; }

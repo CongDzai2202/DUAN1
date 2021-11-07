@@ -23,6 +23,6 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         [StringLength(50)]
         public string SODIENTHOAI { get; set; }
-        public bool? TRANGTHAI { get; set; }
+        public int? TRANGTHAI { get; set; }
     }
 }

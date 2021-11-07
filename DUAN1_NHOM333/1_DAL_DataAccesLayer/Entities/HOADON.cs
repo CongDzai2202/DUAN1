@@ -22,7 +22,7 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         public double? THANHTIEN { get; set; }
         [Required]
-        public bool? TRANGTHAI { get; set; }
+        public int? TRANGTHAI { get; set; }
         [ForeignKey("MANHANVIEN")]
         public string MANHANVIEN { get; set; }
         public NHANVIEN NHANVIENS { get; set; }

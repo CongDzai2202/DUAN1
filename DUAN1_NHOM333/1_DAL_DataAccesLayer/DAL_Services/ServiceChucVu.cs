@@ -35,7 +35,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string Xoa(CHUCVU cv)
         {
-            cv.TRANGTHAI = false;
+            cv.TRANGTHAI = 1;
             if (_dbContext.CHUCVUS.ToList().Any(c=>c.MACHUCVU == cv.MACHUCVU ))
             {
                 _dbContext.CHUCVUS.Update(cv);

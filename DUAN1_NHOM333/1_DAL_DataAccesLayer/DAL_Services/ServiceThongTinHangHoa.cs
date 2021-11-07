@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaTTHH(THONGTINHANGHOA tthh)
         {
-            tthh.TRANGTHAI = false;
+            tthh.TRANGTHAI = 1;
             if (_dbContext.THONGTINHANGHOAS.ToList().Any(c => c.MATHONGTIN == tthh.MATHONGTIN))
             {
                 _dbContext.THONGTINHANGHOAS.Update(tthh);

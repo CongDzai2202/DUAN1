@@ -25,18 +25,8 @@ namespace _1_DAL_DataAccesLayer.Entities
         [StringLength(50)]
         public string BARCODE { get; set; }
         [Required]
-        public bool? TRANGTHAI { get; set; }
-        // [ForeignKey("MAHOADON")]
-        // public HOADON MAHOADON { get; set; }
-        // [ForeignKey("MATHONGTIN")]
-        // public THONGTINHANGHOA MATHONGTIN { get; set; }
-        // [ForeignKey("MAHOADON")]
-        // [Required]
-        // [StringLength(20)]
-        // public string MAHOADON { get; set; }
-        // public HOADON HOADON { get; set; }
-        //
-        // public ICollection<THONGTINHANGHOA> THONGTINHANGHOAS { get; set; }
+        public int? TRANGTHAI { get; set; }
+
         public ICollection<HOADON> Hoadons { get; set; }
         public ICollection<THONGTINHANGHOA> Thongtinhanghoas { get; set; }
         public HOADONCHITIET()

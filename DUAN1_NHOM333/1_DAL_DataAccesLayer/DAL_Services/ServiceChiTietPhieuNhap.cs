@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaCTPN(CHITIETPHIEUNHAP ctpn)
         {
-            ctpn.TRANGTHAI = false;
+            ctpn.TRANGTHAI = 1;
             if (_dbContext.CHITIETPHIEUNHAPS.ToList().Any(c => c.MACHITIETPHIEUNHAP == ctpn.MACHITIETPHIEUNHAP))
             {
                 _dbContext.CHITIETPHIEUNHAPS.Update(ctpn);

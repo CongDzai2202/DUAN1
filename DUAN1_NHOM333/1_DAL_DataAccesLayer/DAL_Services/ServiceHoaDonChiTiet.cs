@@ -9,7 +9,7 @@ using _1_DAL_DataAccesLayer.Entities;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
-    class ServiceHoaDonChiTiet:IServiceHoaDonChiTiet
+    public class ServiceHoaDonChiTiet:IServiceHoaDonChiTiet
     {
         private DatabaseContext1 _dbContext;
         private List<HOADONCHITIET> _lstHoaDonChiTiets;
@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaHDCT(HOADONCHITIET hdct)
         {
-            hdct.TRANGTHAI = false;
+            hdct.TRANGTHAI = 1;
             if (_dbContext.HOADONCHITIETS.ToList().Any(c => c.MAHOADONCHITIET == hdct.MAHOADONCHITIET))
             {
                 _dbContext.HOADONCHITIETS.Update(hdct);

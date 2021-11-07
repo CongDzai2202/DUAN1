@@ -20,6 +20,7 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         [StringLength(50)]
         public string TENHANGHOA { get; set; }
+        public int? TRANGTHAI { get; set; }
 
     }
 }

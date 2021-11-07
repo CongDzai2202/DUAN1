@@ -20,11 +20,8 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         public DateTime NGAYNHAP { get; set; }
         [Required]
-        public bool? TRANGTHAI { get; set; }
-        // [ForeignKey("MANHANVIEN")]
-        // public NHANVIEN MANHANVIEN { get; set; }
-        // [ForeignKey("MANHACUNGCAP")]
-        // public NHACUNGCAP MANHACUNGCAP { get; set; }
+        public int? TRANGTHAI { get; set; }
+   
         public ICollection<NHANVIEN> Nhanviens { get; set; }
         public ICollection<NHACUNGCAP> Nhacungcaps { get; set; }
         public PHIEUNHAP()

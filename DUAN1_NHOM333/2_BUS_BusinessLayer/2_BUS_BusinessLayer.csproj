@@ -7,9 +7,11 @@
 
   <ItemGroup>
     <Folder Include="BUS_Models\" />
-    <Folder Include="BUS_IServices\" />
-    <Folder Include="BUS_Services\" />
     <Folder Include="BUS_Utilities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1_DAL_DataAccesLayer\1_DAL_DataAccesLayer.csproj" />
   </ItemGroup>
 
 </Project>

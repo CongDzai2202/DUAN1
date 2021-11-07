@@ -34,7 +34,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaHD(NHACUNGCAP ncc)
         {
-            ncc.TRANGTHAI = false;
+            ncc.TRANGTHAI = 1;
             if (_dbContext.NHACUNGCAPS.ToList().Any(c => c.MANHACUNGCAP == ncc.MANHACUNGCAP))
             {
                 _dbContext.NHACUNGCAPS.Update(ncc);
