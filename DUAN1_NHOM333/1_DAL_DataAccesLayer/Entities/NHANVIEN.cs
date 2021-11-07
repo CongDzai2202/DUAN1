@@ -47,5 +47,6 @@ namespace _1_DAL_DataAccesLayer.Entities
             Hoadons = new HashSet<HOADON>();
         }
         public CHUCVU Chucvu { get; set; }
+        private string aaa;
     }
 }
