@@ -37,8 +37,15 @@ namespace _1_DAL_DataAccesLayer.Entities
         [Required]
         public int? TRANGTHAI { get; set; }
 
-        [ForeignKey("MACHUCVU")]
-        public string MACHUCVU { get; set; }
-        public CHUCVU CHUCVUS { get; set; }
+        // [ForeignKey("MACHUCVU")]
+        // public CHUCVU CHUCVUS { get; set; }
+        public ICollection<PHIEUNHAP> Phieunhaps { get; set; }
+        public ICollection<HOADON> Hoadons { get; set; }
+        public NHANVIEN()
+        {
+            Phieunhaps = new HashSet<PHIEUNHAP>();
+            Hoadons = new HashSet<HOADON>();
+        }
+        public CHUCVU Chucvu { get; set; }
     }
 }

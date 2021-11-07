@@ -12,36 +12,36 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
     public class ServiceKichThuoc: IServiceKichThuoc
     {
         private DatabaseContext1 _dbContext;
-        private List<KICHTHUOC> _lstKichThuoc;
+        private List<DONVITINH> _lstKichThuoc;
 
         public ServiceKichThuoc()
         {
             _dbContext = new DatabaseContext1();
-            _lstKichThuoc = new List<KICHTHUOC>();
+            _lstKichThuoc = new List<DONVITINH>();
             _dbContext.KICHTHUOCS.ToList();
         }
-        public string ThemKT(KICHTHUOC kt)
+        public string ThemKT(DONVITINH kt)
         {
             _dbContext.KICHTHUOCS.Add(kt);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string SuaKT(KICHTHUOC kt)
+        public string SuaKT(DONVITINH kt)
         {
             _dbContext.KICHTHUOCS.Update(kt);
             _dbContext.SaveChanges();
             return "Sửa Thành Công";
         }
 
-        public string XoaKT(KICHTHUOC kt)
+        public string XoaKT(DONVITINH kt)
         {
             _dbContext.KICHTHUOCS.Remove(kt);
             _dbContext.SaveChanges();
             return "Xóa Thành Công";
         }
 
-        public List<KICHTHUOC> GetLstKichThuoc()
+        public List<DONVITINH> GetLstKichThuoc()
         {
             return _lstKichThuoc;
         }

@@ -8,27 +8,23 @@ using System.Threading.Tasks;
 
 namespace _1_DAL_DataAccesLayer.Entities
 {
-    [Table("NHACUNGCAP")]
-    public class NHACUNGCAP
+    [Table("CHATLIEU")]
+    public class CHATLIEU
     {
         [Required]
         public int? ID { get; set; }
         [Key]
         [Required]
         [StringLength(50)]
-        public string MANHACUNGCAP { get; set; }
-        [Required]
+        public string MACHATLIEU { get; set; }
         [StringLength(50)]
-        public string TENNHACUNGCAP { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string SODIENTHOAI { get; set; }
+        public string TENCHATLIEU { get; set; }
         public int? TRANGTHAI { get; set; }
-        public ICollection<PHIEUNHAP> Phieunhaps { get; set; }
-        public NHACUNGCAP()
+        public ICollection<DONVITINH> Donvitinhs { get; set; }
+        public CHATLIEU()
         {
 
-            Phieunhaps = new HashSet<PHIEUNHAP>();
+            Donvitinhs = new HashSet<DONVITINH>();
         }
     }
 }

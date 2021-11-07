@@ -23,8 +23,14 @@ namespace _1_DAL_DataAccesLayer.Entities
         public double? THANHTIEN { get; set; }
         [Required]
         public int? TRANGTHAI { get; set; }
-        [ForeignKey("MANHANVIEN")]
-        public string MANHANVIEN { get; set; }
-        public NHANVIEN NHANVIENS { get; set; }
+        // [ForeignKey("MANHANVIEN")]
+        // public string MANHANVIEN { get; set; }
+        // public NHANVIEN NHANVIENS { get; set; }
+        public ICollection<HOADONCHITIET> Hoadonchitiets { get; set; }
+        public HOADON()
+        {
+            Hoadonchitiets = new HashSet<HOADONCHITIET>();
+        }
+        public NHANVIEN Nhanvien { get; set; }
     }
 }

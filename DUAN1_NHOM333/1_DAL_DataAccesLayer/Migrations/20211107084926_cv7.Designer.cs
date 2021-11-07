@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1_DAL_DataAccesLayer.DatabaseContext;
 
 namespace _1_DAL_DataAccesLayer.Migrations
 {
     [DbContext(typeof(DatabaseContext1))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211107084926_cv7")]
+    partial class cv7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,6 +83,9 @@ namespace _1_DAL_DataAccesLayer.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("CHUCVUMACHUCVU")
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int?>("ID")
                         .IsRequired()
                         .HasColumnType("int");
@@ -95,6 +100,8 @@ namespace _1_DAL_DataAccesLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MACHUCVU");
+
+                    b.HasIndex("CHUCVUMACHUCVU");
 
                     b.ToTable("CHUCVU");
                 });
@@ -448,6 +455,13 @@ namespace _1_DAL_DataAccesLayer.Migrations
                     b.Navigation("Thongtinhanghoas");
                 });
 
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHUCVU", b =>
+                {
+                    b.HasOne("_1_DAL_DataAccesLayer.Entities.CHUCVU", null)
+                        .WithMany("Chucvus")
+                        .HasForeignKey("CHUCVUMACHUCVU");
+                });
+
             modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.DONVITINH", b =>
                 {
                     b.HasOne("_1_DAL_DataAccesLayer.Entities.CHATLIEU", "Chatlieus")
@@ -482,7 +496,7 @@ namespace _1_DAL_DataAccesLayer.Migrations
             modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHANVIEN", b =>
                 {
                     b.HasOne("_1_DAL_DataAccesLayer.Entities.CHUCVU", "Chucvu")
-                        .WithMany("Nhanviens")
+                        .WithMany()
                         .HasForeignKey("ChucvuMACHUCVU");
 
                     b.Navigation("Chucvu");
@@ -537,7 +551,7 @@ namespace _1_DAL_DataAccesLayer.Migrations
 
             modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHUCVU", b =>
                 {
-                    b.Navigation("Nhanviens");
+                    b.Navigation("Chucvus");
                 });
 
             modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.DONVITINH", b =>

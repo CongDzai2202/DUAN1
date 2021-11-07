@@ -27,7 +27,7 @@ namespace _1_DAL_DataAccesLayer.DatabaseContext
         public DbSet<CHITIETPHIEUNHAP> CHITIETPHIEUNHAPS { get; set; }
         public DbSet<HANGHOA> HANGHOAS { get; set; }
         public DbSet<THONGTINHANGHOA> THONGTINHANGHOAS { get; set; }
-        public DbSet<KICHTHUOC> KICHTHUOCS { get; set; }
+        public DbSet<DONVITINH> KICHTHUOCS { get; set; }
         public DbSet<LOAIHANG> LOAIHANGS { get; set; }
 
 

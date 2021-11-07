@@ -23,6 +23,11 @@ namespace _1_DAL_DataAccesLayer.Entities
         public string TENCHUCVU { get; set; }
         [Required]
         public int? TRANGTHAI { get; set; }
-        
+        public ICollection<NHANVIEN> Nhanviens { get; set; }
+        public CHUCVU()
+        {
+            Nhanviens = new HashSet<NHANVIEN>();
+        }
+
     }
 }

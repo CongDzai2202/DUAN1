@@ -21,13 +21,22 @@ namespace _1_DAL_DataAccesLayer.Entities
         public DateTime NGAYNHAP { get; set; }
         [Required]
         public int? TRANGTHAI { get; set; }
-   
-        public ICollection<NHANVIEN> Nhanviens { get; set; }
-        public ICollection<NHACUNGCAP> Nhacungcaps { get; set; }
+        public ICollection<CHITIETPHIEUNHAP> Chitietphieunhaps { get; set; }
         public PHIEUNHAP()
         {
-            Nhanviens = new HashSet<NHANVIEN>();
-            Nhacungcaps = new HashSet<NHACUNGCAP>();
+
+            Chitietphieunhaps = new HashSet<CHITIETPHIEUNHAP>();
         }
+        public NHACUNGCAP Nhacungcaps { get; set; }
+        public NHANVIEN  Nhanvien{ get; set; }
+        // [ForeignKey("MANHACUNGCAP")]
+        // public NHACUNGCAP Nhacungcaps { get; set; }
+        // public ICollection<NHANVIEN> Nhanviens { get; set; }
+        // public ICollection<NHACUNGCAP> Nhacungcaps { get; set; }
+        // public PHIEUNHAP()
+        // {
+        //     Nhanviens = new HashSet<NHANVIEN>();
+        //     Nhacungcaps = new HashSet<NHACUNGCAP>();
+        // }
     }
 }

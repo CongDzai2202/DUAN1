@@ -21,6 +21,12 @@ namespace _1_DAL_DataAccesLayer.Entities
         [StringLength(50)]
         public string TENHANGHOA { get; set; }
         public int? TRANGTHAI { get; set; }
+        public ICollection<THONGTINHANGHOA> Thongtinhanghoas { get; set; }
+        public HANGHOA()
+        {
+
+            Thongtinhanghoas = new HashSet<THONGTINHANGHOA>();
+        }
 
     }
 }

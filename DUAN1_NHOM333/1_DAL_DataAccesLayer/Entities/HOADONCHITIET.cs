@@ -26,14 +26,14 @@ namespace _1_DAL_DataAccesLayer.Entities
         public string BARCODE { get; set; }
         [Required]
         public int? TRANGTHAI { get; set; }
-
-        public ICollection<HOADON> Hoadons { get; set; }
-        public ICollection<THONGTINHANGHOA> Thongtinhanghoas { get; set; }
-        public HOADONCHITIET()
-        {
-            Hoadons = new HashSet<HOADON>();
-            Thongtinhanghoas = new HashSet<THONGTINHANGHOA>();
-        }
+        public THONGTINHANGHOA Thongtinhanghoa { get; set; }
+        // public ICollection<HOADON> Hoadons { get; set; }
+        // public ICollection<THONGTINHANGHOA> Thongtinhanghoas { get; set; }
+        // public HOADONCHITIET()
+        // {
+        //     Hoadons = new HashSet<HOADON>();
+        //     Thongtinhanghoas = new HashSet<THONGTINHANGHOA>();
+        // }
 
     }
 }

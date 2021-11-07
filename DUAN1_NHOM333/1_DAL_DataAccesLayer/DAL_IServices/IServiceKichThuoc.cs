@@ -9,9 +9,9 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
 {
     public interface IServiceKichThuoc
     {
-        public string ThemKT(KICHTHUOC kt);
-        public string SuaKT(KICHTHUOC kt);
-        public string XoaKT(KICHTHUOC kt);
-        public List<KICHTHUOC> GetLstKichThuoc();
+        public string ThemKT(DONVITINH kt);
+        public string SuaKT(DONVITINH kt);
+        public string XoaKT(DONVITINH kt);
+        public List<DONVITINH> GetLstKichThuoc();
     }
 }

@@ -35,17 +35,18 @@ namespace _1_DAL_DataAccesLayer.Entities
         // public LOAIHANG MALOAIHANG { get; set; }
         // [ForeignKey("MAKICHTHUOC")]
         // public KICHTHUOC MAKICHTHUOC { get; set; }
-        public ICollection<HANGHOA> Hanghoas { get; set; }
-        public ICollection<LOAIHANG> Loaihangs { get; set; }
-        public ICollection<KICHTHUOC> Kichthuocs { get; set; }
+
+        public ICollection<HOADONCHITIET> Hoadonchitiets { get; set; }
+        public ICollection<CHITIETPHIEUNHAP> Chitietphieunhaps { get; set; }
         public THONGTINHANGHOA()
         {
-            Hanghoas = new HashSet<HANGHOA>();
-            Loaihangs = new HashSet<LOAIHANG>();
-            Kichthuocs = new HashSet<KICHTHUOC>();
+            Chitietphieunhaps = new HashSet<CHITIETPHIEUNHAP>();
+            Hoadonchitiets = new HashSet<HOADONCHITIET>();
         }
-
-
+        public LOAIHANG Loaihangs { get; set; }
+        public HANGHOA Hanghoas { get; set; }
+        public DONVITINH Donvitinhs { get; set; }
+        public XUATXU Xuatxus { get; set; }
 
     }
 }
