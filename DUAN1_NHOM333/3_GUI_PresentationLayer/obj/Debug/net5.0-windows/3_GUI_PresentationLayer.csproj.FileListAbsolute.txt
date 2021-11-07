@@ -16,3 +16,9 @@ C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\o
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\ref\3_GUI_PresentationLayer.dll
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\3_GUI_PresentationLayer.pdb
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\3_GUI_PresentationLayer.genruntimeconfig.cache
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\AForge.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\AForge.Video.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\AForge.Video.DirectShow.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\zxing.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_ThongTinSanPham.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\3_GUI_PresentationLayer.csproj.CopyComplete

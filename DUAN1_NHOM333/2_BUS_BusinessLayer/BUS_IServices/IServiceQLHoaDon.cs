@@ -13,5 +13,6 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
         public string ThemHD(HOADON hd);
         public string SuaHD(HOADON hd);
         public string XoaHD(HOADON hd);
+        public string LuuHD();
     }
 }

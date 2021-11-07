@@ -12,12 +12,12 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
     public class ServiceThongTinHangHoa: IServiceThongTinHangHoa
     {
         private DatabaseContext1 _dbContext;
-        private List<HANGHOA> _lstHangHoa;
+        private List<THONGTINHANGHOA> _lstHangHoa;
 
         public ServiceThongTinHangHoa()
         {
             _dbContext = new DatabaseContext1();
-            _lstHangHoa = new List<HANGHOA>();
+            _lstHangHoa = new List<THONGTINHANGHOA>();
             _dbContext.THONGTINHANGHOAS.ToList();
         }
         public string ThemTTHH(THONGTINHANGHOA tthh)
@@ -53,7 +53,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Thêm Thành Công";
         }
 
-        public List<HANGHOA> GetLstHangHoas()
+        public List<THONGTINHANGHOA> GetLstTTHangHoas()
         {
             return _lstHangHoa;
         }

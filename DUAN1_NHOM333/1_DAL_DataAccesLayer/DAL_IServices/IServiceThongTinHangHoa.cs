@@ -13,6 +13,6 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
         public string SuaTTHH(THONGTINHANGHOA tthh);
         public string XoaTTHH(THONGTINHANGHOA tthh);
         public string LuuTTHH();
-        public List<HANGHOA> GetLstHangHoas();
+        public List<THONGTINHANGHOA> GetLstTTHangHoas();
     }
 }

@@ -14,6 +14,7 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
         public string ThemHDCT(HOADONCHITIET hdct);
         public string SuaHDCT(HOADONCHITIET hdct);
         public string XoaHDCT(HOADONCHITIET hdct);
+        public string Luu();
 
     }
 }

@@ -37,5 +37,10 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             return _iServiceHoaDonChiTiet.XoaHDCT(hdct);
         }
+
+        public string Luu()
+        {
+            return _iServiceHoaDonChiTiet.LuuHDCT();
+        }
     }
 }

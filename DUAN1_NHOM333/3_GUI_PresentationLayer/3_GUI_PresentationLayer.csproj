@@ -12,4 +12,9 @@
     <Folder Include="Icon\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="ZXing.Net" Version="0.16.6" />
+  </ItemGroup>
+
 </Project>

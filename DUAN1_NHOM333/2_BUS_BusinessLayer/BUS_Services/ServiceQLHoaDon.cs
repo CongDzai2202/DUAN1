@@ -37,5 +37,10 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             return _iServiceHoaDon.XoaHD(hd);
         }
+
+        public string LuuHD()
+        {
+            return _iServiceHoaDon.LuuHD();
+        }
     }
 }
