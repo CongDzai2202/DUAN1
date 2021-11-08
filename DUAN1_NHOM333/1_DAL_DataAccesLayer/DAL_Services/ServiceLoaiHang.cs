@@ -4,44 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceLoaiHang: IServiceLoaiHang
     {
-        private DatabaseContext1 _dbContext;
-        private List<LOAIHANG> _lstLoaiHangs;
+        private DatabaseContext _dbContext;
+        private List<LoaiHang> _lstLoaiHangs;
 
         public ServiceLoaiHang()
         {
-            _dbContext = new DatabaseContext1();
-            _lstLoaiHangs = new List<LOAIHANG>();
-            _dbContext.LOAIHANGS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstLoaiHangs = new List<LoaiHang>();
+            _dbContext.LoaiHangs.ToList();
 
         }
-        public string ThemLH(LOAIHANG lh)
+        public string ThemLH(LoaiHang lh)
         {
-            _dbContext.LOAIHANGS.Add(lh);
+            _dbContext.LoaiHangs.Add(lh);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string SuaLH(LOAIHANG lh)
+        public string SuaLH(LoaiHang lh)
         {
-            _dbContext.LOAIHANGS.Update(lh);
+            _dbContext.LoaiHangs.Update(lh);
             _dbContext.SaveChanges();
             return "Sua Thành Công";
         }
 
-        public string XoaLH(LOAIHANG lh)
+        public string XoaLH(LoaiHang lh)
         {
            
             return "Xóa Thành Công";
         }
 
-        public List<LOAIHANG> GetLstLoaiHang()
+        public List<LoaiHang> GetLstLoaiHang()
         {
             return _lstLoaiHangs;
         }

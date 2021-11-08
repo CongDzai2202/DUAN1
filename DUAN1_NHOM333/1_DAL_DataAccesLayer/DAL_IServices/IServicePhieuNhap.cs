@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_IServices
 {
     public interface IServicePhieuNhap
     {
-        public string ThemPN(PHIEUNHAP pn);
-        public string SuaPN(PHIEUNHAP pn);
-        public string XoaPN(PHIEUNHAP pn);
+        public string ThemPN(PhieuNhap pn);
+        public string SuaPN(PhieuNhap pn);
+        public string XoaPN(PhieuNhap pn);
         public string LuuPN();
-        public List<PHIEUNHAP> GetLstPhieunhaps();
+        public List<PhieuNhap> GetLstPhieunhaps();
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.DAL_Services;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Models;
 using _2_BUS_BusinessLayer.BUS_IServices;
 
 namespace _2_BUS_BusinessLayer.BUS_Services
@@ -18,22 +18,22 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             _iServiceHoaDonChiTiet = new ServiceHoaDonChiTiet();
         }
-        public List<HOADONCHITIET> getLstHoaDonChiTiet()
+        public List<HoaDonChiTiet> getLstHoaDonChiTiet()
         {
             return _iServiceHoaDonChiTiet.GetHoaDonChiTiets();
         }
 
-        public string ThemHDCT(HOADONCHITIET hdct)
+        public string ThemHDCT(HoaDonChiTiet hdct)
         {
             return _iServiceHoaDonChiTiet.ThemHDCT(hdct);
         }
 
-        public string SuaHDCT(HOADONCHITIET hdct)
+        public string SuaHDCT(HoaDonChiTiet hdct)
         {
             return _iServiceHoaDonChiTiet.SuaHDCT(hdct);
         }
 
-        public string XoaHDCT(HOADONCHITIET hdct)
+        public string XoaHDCT(HoaDonChiTiet hdct)
         {
             return _iServiceHoaDonChiTiet.XoaHDCT(hdct);
         }

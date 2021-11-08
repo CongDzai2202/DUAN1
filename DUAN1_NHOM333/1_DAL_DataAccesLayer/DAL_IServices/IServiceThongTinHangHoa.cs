@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_IServices
 {
     public interface IServiceThongTinHangHoa
     {
-        public string ThemTTHH(THONGTINHANGHOA tthh);
-        public string SuaTTHH(THONGTINHANGHOA tthh);
-        public string XoaTTHH(THONGTINHANGHOA tthh);
+        public string ThemTTHH(ThongTinSanPham tthh);
+        public string SuaTTHH(ThongTinSanPham tthh);
+        public string XoaTTHH(ThongTinSanPham tthh);
         public string LuuTTHH();
-        public List<THONGTINHANGHOA> GetLstTTHangHoas();
+        public List<ThongTinSanPham> GetLstTTHangHoas();
     }
 }

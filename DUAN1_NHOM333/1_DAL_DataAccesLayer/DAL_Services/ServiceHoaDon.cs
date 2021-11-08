@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceHoaDon:IServiceHoaDon
     {
-        private DatabaseContext1 _dbContext;
-        private List<HOADON> _lstHoaDon;
+        private DatabaseContext _dbContext;
+        private List<HoaDon> _lstHoaDon;
 
         public ServiceHoaDon()
         {
-            _dbContext = new DatabaseContext1();
-            _lstHoaDon = new List<HOADON>();
-            _dbContext.HOADONS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstHoaDon = new List<HoaDon>();
+            _dbContext.HoaDons.ToList();
         }
-        public string ThemHD(HOADON hd)
+        public string ThemHD(HoaDon hd)
         {
-            _dbContext.HOADONS.Add(hd);
+            _dbContext.HoaDons.Add(hd);
             return "Thêm Thành Công";
         }
 
-        public string SuaHD(HOADON hd)
+        public string SuaHD(HoaDon hd)
         {
-            _dbContext.HOADONS.Update(hd);
+            _dbContext.HoaDons.Update(hd);
             return "Sửa Thành Công";
         }
 
-        public string XoaHD(HOADON hd)
+        public string XoaHD(HoaDon hd)
         {
-            hd.TRANGTHAI = 1;
-            if (_dbContext.HOADONS.ToList().Any(c => c.MAHOADON == hd.MAHOADON))
+            hd.TrangThai = 1;
+            if (_dbContext.HoaDons.ToList().Any(c => c.MaHoaDon == hd.MaHoaDon))
             {
-                _dbContext.HOADONS.Update(hd);
+                _dbContext.HoaDons.Update(hd);
                 return "Xóa Thành Công";
             }
             else
@@ -52,7 +52,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Lưu Hóa Đơn Thành Công";
         }
 
-        public List<HOADON> GetLstHoaDon()
+        public List<HoaDon> GetLstHoaDon()
         {
             return _lstHoaDon;
         }

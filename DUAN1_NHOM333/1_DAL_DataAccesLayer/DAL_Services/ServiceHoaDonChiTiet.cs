@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceHoaDonChiTiet:IServiceHoaDonChiTiet
     {
-        private DatabaseContext1 _dbContext;
-        private List<HOADONCHITIET> _lstHoaDonChiTiets;
+        private DatabaseContext _dbContext;
+        private List<HoaDonChiTiet> _lstHoaDonChiTiets;
         public ServiceHoaDonChiTiet()
         {
-            _dbContext = new DatabaseContext1();
-            _lstHoaDonChiTiets = new List<HOADONCHITIET>();
-            _dbContext.HOADONCHITIETS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstHoaDonChiTiets = new List<HoaDonChiTiet>();
+            _dbContext.HoaDonChiTiets.ToList();
         }
 
-        public string ThemHDCT(HOADONCHITIET hdct)
+        public string ThemHDCT(HoaDonChiTiet hdct)
         {
-            _dbContext.HOADONCHITIETS.Add(hdct);
+            _dbContext.HoaDonChiTiets.Add(hdct);
             return "Thêm Thành Công";
         }
 
-        public string SuaHDCT(HOADONCHITIET hdct)
+        public string SuaHDCT(HoaDonChiTiet hdct)
         {
-            _dbContext.HOADONCHITIETS.Update(hdct);
+            _dbContext.HoaDonChiTiets.Update(hdct);
             return "Sửa Thành Công";
         }
 
-        public string XoaHDCT(HOADONCHITIET hdct)
+        public string XoaHDCT(HoaDonChiTiet hdct)
         {
-            hdct.TRANGTHAI = 1;
-            if (_dbContext.HOADONCHITIETS.ToList().Any(c => c.MAHOADONCHITIET == hdct.MAHOADONCHITIET))
+            hdct.TrangThai = 1;
+            if (_dbContext.HoaDonChiTiets.ToList().Any(c => c.MaHoaDonChiTiet== hdct.MaHoaDonChiTiet))
             {
-                _dbContext.HOADONCHITIETS.Update(hdct);
+                _dbContext.HoaDonChiTiets.Update(hdct);
                 return "Xóa Thành Công";
             }
             else
@@ -52,7 +52,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Lưu Thành Công";
         }
 
-        public List<HOADONCHITIET> GetHoaDonChiTiets()
+        public List<HoaDonChiTiet> GetHoaDonChiTiets()
         {
             return _lstHoaDonChiTiets;
         }

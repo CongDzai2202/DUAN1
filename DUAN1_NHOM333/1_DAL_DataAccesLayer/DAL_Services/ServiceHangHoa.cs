@@ -4,43 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceHangHoa : IServiceHangHoa
     {
-        private DatabaseContext1 _dbContext;
-        private List<HANGHOA> _lstHangHoa;
+        private DatabaseContext _dbContext;
+        private List<SanPham> _lstHangHoa;
 
         public ServiceHangHoa()
         {
-            _dbContext = new DatabaseContext1();
-            _lstHangHoa = new List<HANGHOA>();
-            _dbContext.HANGHOAS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstHangHoa = new List<SanPham>();
+            _lstHangHoa = _dbContext.SanPhams.ToList();
         }
 
-        public string ThemHH(HANGHOA hh)
+        public string ThemHH(SanPham hh)
         {
-            _dbContext.HANGHOAS.Add(hh);
+            _dbContext.SanPhams.Add(hh);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string SuaHH(HANGHOA hh)
+        public string SuaHH(SanPham hh)
         {
-            _dbContext.HANGHOAS.Update(hh);
+            _dbContext.SanPhams.Update(hh);
             _dbContext.SaveChanges();
             return "Sửa Thành Công";
         }
 
-        public string XoaHH(HANGHOA hh)
+        public string XoaHH(SanPham hh)
         {
             return "Xóa Thành Công";
         }
 
-        public List<HANGHOA> GetLstHangHoa()
+        public List<SanPham> GetLstHangHoa()
         {
             return _lstHangHoa;
         }

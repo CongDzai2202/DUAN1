@@ -4,41 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceChucVu:IServiceChucVu
     {
-        private DatabaseContext1 _dbContext;
-        private List<CHUCVU> _lstChucVus;
+        private DatabaseContext _dbContext;
+        private List<ChucVu> _lstChucVus;
         public ServiceChucVu()
         {
-            _dbContext = new DatabaseContext1();
-            _lstChucVus = new List<CHUCVU>();
-            _lstChucVus = _dbContext.CHUCVUS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstChucVus = new List<ChucVu>();
+            _lstChucVus = _dbContext.ChucVus.ToList();
         }
-        public string Them(CHUCVU cv)
+        public string Them(ChucVu cv)
         {
-            _dbContext.CHUCVUS.Add(cv);
+            _dbContext.ChucVus.Add(cv);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string Sua(CHUCVU cv)
+        public string Sua(ChucVu cv)
         {
-            _dbContext.CHUCVUS.Update(cv);
+            _dbContext.ChucVus.Update(cv);
             _dbContext.SaveChanges();
             return "Sửa Thành Công";
         }
 
-        public string Xoa(CHUCVU cv)
+        public string Xoa(ChucVu cv)
         {
-            cv.TRANGTHAI = 1;
-            if (_dbContext.CHUCVUS.ToList().Any(c=>c.MACHUCVU == cv.MACHUCVU ))
+            cv.TrangThai = 1;
+            if (_dbContext.ChucVus.ToList().Any(c=>c.MaChucVu == cv.MaChucVu ))
             {
-                _dbContext.CHUCVUS.Update(cv);
+                _dbContext.ChucVus.Update(cv);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -48,7 +48,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             }
         }
 
-        public List<CHUCVU> GetLstChucvus()
+        public List<ChucVu> GetLstChucvus()
         {
             return _lstChucVus;
         }

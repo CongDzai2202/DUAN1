@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _1_DAL_DataAccesLayer.DatabaseContext;
+using _1_DAL_DataAccesLayer.Context;
 
 namespace _1_DAL_DataAccesLayer.Migrations
 {
-    [DbContext(typeof(DatabaseContext1))]
+    [DbContext(typeof(DatabaseContext))]
     [Migration("20211107085217_vc8")]
     partial class vc8
     {

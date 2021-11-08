@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _1_DAL_DataAccesLayer.DatabaseContext;
+using _1_DAL_DataAccesLayer.Context;
 
 namespace _1_DAL_DataAccesLayer.Migrations
 {
-    [DbContext(typeof(DatabaseContext1))]
+    [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -19,574 +19,642 @@ namespace _1_DAL_DataAccesLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHATLIEU", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ChatLieu", b =>
                 {
-                    b.Property<string>("MACHATLIEU")
+                    b.Property<string>("MaChatLieu")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Property<string>("TENCHATLIEU")
+                    b.Property<string>("TenChatLieu")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("TRANGTHAI")
+                    b.Property<int?>("TrangThai")
                         .HasColumnType("int");
 
-                    b.HasKey("MACHATLIEU");
+                    b.HasKey("MaChatLieu")
+                        .HasName("PK__ChatLieu__453995BC8D0BF58A");
 
-                    b.ToTable("CHATLIEU");
+                    b.ToTable("ChatLieu");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHITIETPHIEUNHAP", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ChucVu", b =>
                 {
-                    b.Property<string>("MACHITIETPHIEUNHAP")
+                    b.Property<string>("MaChucVu")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<double>("DONGIA")
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("TenChucVu")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaChucVu")
+                        .HasName("PK__ChucVu__D4639533FC716D6C");
+
+                    b.ToTable("ChucVu");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.DonViTinh", b =>
+                {
+                    b.Property<string>("MaDonViTinh")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("MaChatLieu")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TenDonViTinh")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaDonViTinh")
+                        .HasName("PK__DonViTin__ADD89AA2022E2F1B");
+
+                    b.HasIndex("MaChatLieu");
+
+                    b.ToTable("DonViTinh");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.HoaDon", b =>
+                {
+                    b.Property<string>("MaHoaDon")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("MaNhanVien")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("NgayXuat")
+                        .HasColumnType("date");
+
+                    b.Property<double?>("ThanhTien")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ID")
+                    b.Property<int?>("TrangThai")
                         .HasColumnType("int");
 
-                    b.Property<string>("PhieunhapsMAPHIEUNHAP")
-                        .HasColumnType("nvarchar(50)");
+                    b.HasKey("MaHoaDon")
+                        .HasName("PK__HoaDon__835ED13BF13FB2F1");
 
-                    b.Property<float>("SOLUONG")
-                        .HasColumnType("real");
+                    b.HasIndex("MaNhanVien");
 
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ThongtinhanghoasMATHONGTIN")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("MACHITIETPHIEUNHAP");
-
-                    b.HasIndex("PhieunhapsMAPHIEUNHAP");
-
-                    b.HasIndex("ThongtinhanghoasMATHONGTIN");
-
-                    b.ToTable("CHITIETPHIEUNHAP");
+                    b.ToTable("HoaDon");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHUCVU", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.HoaDonChiTiet", b =>
                 {
-                    b.Property<string>("MACHUCVU")
+                    b.Property<string>("MaHoaDonChiTiet")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("TENCHUCVU")
+                    b.Property<string>("BarCode")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("MACHUCVU");
-
-                    b.ToTable("CHUCVU");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.DONVITINH", b =>
-                {
-                    b.Property<string>("MADONVITINH")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("ChatlieusMACHATLIEU")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("TENDONVITINH")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .HasColumnType("int");
-
-                    b.HasKey("MADONVITINH");
-
-                    b.HasIndex("ChatlieusMACHATLIEU");
-
-                    b.ToTable("DONVITINH");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HANGHOA", b =>
-                {
-                    b.Property<string>("MAHANGHOA")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("TENHANGHOA")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .HasColumnType("int");
-
-                    b.HasKey("MAHANGHOA");
-
-                    b.ToTable("HANGHOA");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HOADON", b =>
-                {
-                    b.Property<string>("MAHOADON")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("NGAYXUAT")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NhanvienMANHANVIEN")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<double?>("THANHTIEN")
-                        .IsRequired()
+                    b.Property<double?>("DonGia")
                         .HasColumnType("float");
 
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("MAHOADON");
-
-                    b.HasIndex("NhanvienMANHANVIEN");
-
-                    b.ToTable("HOADON");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HOADONCHITIET", b =>
-                {
-                    b.Property<string>("MAHOADONCHITIET")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("BARCODE")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<double?>("DONGIA")
-                        .IsRequired()
-                        .HasColumnType("float");
-
-                    b.Property<string>("HOADONMAHOADON")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SOLUONG")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ThongtinhanghoaMATHONGTIN")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("MAHOADONCHITIET");
-
-                    b.HasIndex("HOADONMAHOADON");
-
-                    b.HasIndex("ThongtinhanghoaMATHONGTIN");
-
-                    b.ToTable("HOADONCHITIET");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.LOAIHANG", b =>
-                {
-                    b.Property<string>("MALOAIHANG")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("TENLOAIHANG")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .HasColumnType("int");
-
-                    b.HasKey("MALOAIHANG");
-
-                    b.ToTable("LOAIHANG");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHACUNGCAP", b =>
-                {
-                    b.Property<string>("MANHACUNGCAP")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("SODIENTHOAI")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("TENNHACUNGCAP")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .HasColumnType("int");
-
-                    b.HasKey("MANHACUNGCAP");
-
-                    b.ToTable("NHACUNGCAP");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHANVIEN", b =>
-                {
-                    b.Property<string>("MANHANVIEN")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("ChucvuMACHUCVU")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("DIACHI")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("MATKHAU")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("NAMSINH")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("int");
-
-                    b.Property<string>("SOCMND")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SODIENTHOAI")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("TENNHANVIEN")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("MANHANVIEN");
-
-                    b.HasIndex("ChucvuMACHUCVU");
-
-                    b.ToTable("NHANVIEN");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.PHIEUNHAP", b =>
-                {
-                    b.Property<string>("MAPHIEUNHAP")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("NGAYNHAP")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NhacungcapsMANHACUNGCAP")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NhanvienMANHANVIEN")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("MAPHIEUNHAP");
-
-                    b.HasIndex("NhacungcapsMANHACUNGCAP");
-
-                    b.HasIndex("NhanvienMANHANVIEN");
-
-                    b.ToTable("PHIEUNHAP");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.THONGTINHANGHOA", b =>
-                {
-                    b.Property<string>("MATHONGTIN")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("BARCODE")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<double>("DONGIA")
-                        .HasColumnType("float");
-
-                    b.Property<string>("DonvitinhsMADONVITINH")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("HANSUDUNG")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("HINHANH")
+                    b.Property<string>("GhiChu")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("HanghoasMAHANGHOA")
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Property<int?>("ID")
+                    b.Property<string>("MaHoaDon")
                         .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("LoaihangsMALOAIHANG")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("SOLUONG")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TRANGTHAI")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("XuatxusMAXUATXU")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("MATHONGTIN");
-
-                    b.HasIndex("DonvitinhsMADONVITINH");
-
-                    b.HasIndex("HanghoasMAHANGHOA");
-
-                    b.HasIndex("LoaihangsMALOAIHANG");
-
-                    b.HasIndex("XuatxusMAXUATXU");
-
-                    b.ToTable("THONGTINHANGHOA");
-                });
-
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.XUATXU", b =>
-                {
-                    b.Property<string>("MAXUATXU")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("TENNUOC")
+                    b.Property<string>("MaThongTin")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("MAXUATXU");
+                    b.Property<int?>("SoLuong")
+                        .HasColumnType("int");
 
-                    b.ToTable("XUATXU");
+                    b.Property<string>("TenSanPham")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaHoaDonChiTiet")
+                        .HasName("PK__HoaDonCh__6C2FD0CE34F8C7B8");
+
+                    b.HasIndex("MaHoaDon");
+
+                    b.HasIndex("MaThongTin");
+
+                    b.ToTable("HoaDonChiTiet");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHITIETPHIEUNHAP", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.LoaiHang", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.PHIEUNHAP", "Phieunhaps")
-                        .WithMany("Chitietphieunhaps")
-                        .HasForeignKey("PhieunhapsMAPHIEUNHAP");
+                    b.Property<string>("MaLoaiHang")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.THONGTINHANGHOA", "Thongtinhanghoas")
-                        .WithMany("Chitietphieunhaps")
-                        .HasForeignKey("ThongtinhanghoasMATHONGTIN");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Navigation("Phieunhaps");
+                    b.Property<string>("TenLoaiHang")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Thongtinhanghoas");
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaLoaiHang")
+                        .HasName("PK__LoaiHang__5EEA4160BAF12530");
+
+                    b.ToTable("LoaiHang");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.DONVITINH", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.NhaCungCap", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.CHATLIEU", "Chatlieus")
-                        .WithMany("Donvitinhs")
-                        .HasForeignKey("ChatlieusMACHATLIEU");
+                    b.Property<string>("MaNhaCungCap")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Chatlieus");
+                    b.Property<string>("DiaChi")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("SoDienThoai")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("TenNhaCungCap")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaNhaCungCap")
+                        .HasName("PK__NhaCungC__53DA9205C78767AF");
+
+                    b.ToTable("NhaCungCap");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HOADON", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.NhanVien", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.NHANVIEN", "Nhanvien")
-                        .WithMany("Hoadons")
-                        .HasForeignKey("NhanvienMANHANVIEN");
+                    b.Property<string>("MaNhanVien")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Nhanvien");
+                    b.Property<string>("DiaChi")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("MaChucVu")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MatKhau")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("NamSinh")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SoCmnd")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("SoCMND");
+
+                    b.Property<string>("SoDienThoai")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("TenNhanVien")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaNhanVien")
+                        .HasName("PK__NhanVien__77B2CA474BA15FD3");
+
+                    b.HasIndex("MaChucVu");
+
+                    b.ToTable("NhanVien");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HOADONCHITIET", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.PhieuNhap", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.HOADON", null)
-                        .WithMany("Hoadonchitiets")
-                        .HasForeignKey("HOADONMAHOADON");
+                    b.Property<string>("MaPhieuNhap")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.THONGTINHANGHOA", "Thongtinhanghoa")
-                        .WithMany("Hoadonchitiets")
-                        .HasForeignKey("ThongtinhanghoaMATHONGTIN");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Navigation("Thongtinhanghoa");
+                    b.Property<string>("MaNhaCungCap")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MaNhanVien")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("NgayNhap")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaPhieuNhap")
+                        .HasName("PK__PhieuNha__1470EF3B7D606C9C");
+
+                    b.HasIndex("MaNhaCungCap");
+
+                    b.HasIndex("MaNhanVien");
+
+                    b.ToTable("PhieuNhap");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHANVIEN", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.PhieuNhapChiTiet", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.CHUCVU", "Chucvu")
-                        .WithMany("Nhanviens")
-                        .HasForeignKey("ChucvuMACHUCVU");
+                    b.Property<string>("MaCtphieuNhap")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("MaCTPhieuNhap");
 
-                    b.Navigation("Chucvu");
+                    b.Property<double?>("DonGiaNhap")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("MaPhieuNhap")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MaThongTin")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaCtphieuNhap")
+                        .HasName("PK__PhieuNha__7920817423F704B8");
+
+                    b.HasIndex("MaPhieuNhap");
+
+                    b.HasIndex("MaThongTin");
+
+                    b.ToTable("PhieuNhapChiTiet");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.PHIEUNHAP", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.SanPham", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.NHACUNGCAP", "Nhacungcaps")
-                        .WithMany("Phieunhaps")
-                        .HasForeignKey("NhacungcapsMANHACUNGCAP");
+                    b.Property<string>("MaSanPham")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.NHANVIEN", "Nhanvien")
-                        .WithMany("Phieunhaps")
-                        .HasForeignKey("NhanvienMANHANVIEN");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Navigation("Nhacungcaps");
+                    b.Property<string>("TenSanPham")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Nhanvien");
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaSanPham")
+                        .HasName("PK__SanPham__FAC7442DF37C2630");
+
+                    b.ToTable("SanPham");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.THONGTINHANGHOA", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ThongTinSanPham", b =>
                 {
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.DONVITINH", "Donvitinhs")
-                        .WithMany("Thongtinhanghoas")
-                        .HasForeignKey("DonvitinhsMADONVITINH");
+                    b.Property<string>("MaThongTin")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.HANGHOA", "Hanghoas")
-                        .WithMany("Thongtinhanghoas")
-                        .HasForeignKey("HanghoasMAHANGHOA");
+                    b.Property<string>("Barcode")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.LOAIHANG", "Loaihangs")
-                        .WithMany("Thongtinhanghoas")
-                        .HasForeignKey("LoaihangsMALOAIHANG");
+                    b.Property<double?>("DonGia")
+                        .HasColumnType("float");
 
-                    b.HasOne("_1_DAL_DataAccesLayer.Entities.XUATXU", "Xuatxus")
-                        .WithMany("Thongtinhanghoas")
-                        .HasForeignKey("XuatxusMAXUATXU");
+                    b.Property<string>("HinhAnh")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Donvitinhs");
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
 
-                    b.Navigation("Hanghoas");
+                    b.Property<string>("MaDonViTinh")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Loaihangs");
+                    b.Property<string>("MaLoaiHang")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Navigation("Xuatxus");
+                    b.Property<string>("MaSanPham")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MaXuatXu")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MoTa")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("TrongLuong")
+                        .HasColumnType("float");
+
+                    b.HasKey("MaThongTin")
+                        .HasName("PK__ThongTin__5E4CADDCEDD1F21C");
+
+                    b.HasIndex("MaDonViTinh");
+
+                    b.HasIndex("MaLoaiHang");
+
+                    b.HasIndex("MaSanPham");
+
+                    b.HasIndex("MaXuatXu");
+
+                    b.ToTable("ThongTinSanPham");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHATLIEU", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.XuatXu", b =>
                 {
-                    b.Navigation("Donvitinhs");
+                    b.Property<string>("MaXuatXu")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("TenNuoc")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaXuatXu")
+                        .HasName("PK__XuatXu__27BB6B197CC59C96");
+
+                    b.ToTable("XuatXu");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.CHUCVU", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.DonViTinh", b =>
                 {
-                    b.Navigation("Nhanviens");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.ChatLieu", "MaChatLieuNavigation")
+                        .WithMany("DonViTinhs")
+                        .HasForeignKey("MaChatLieu")
+                        .HasConstraintName("FK__DonViTinh__MaCha__1A14E395")
+                        .IsRequired();
+
+                    b.Navigation("MaChatLieuNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.DONVITINH", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.HoaDon", b =>
                 {
-                    b.Navigation("Thongtinhanghoas");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.NhanVien", "MaNhanVienNavigation")
+                        .WithMany("HoaDons")
+                        .HasForeignKey("MaNhanVien")
+                        .HasConstraintName("FK__HoaDon__MaNhanVi__15502E78")
+                        .IsRequired();
+
+                    b.Navigation("MaNhanVienNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HANGHOA", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.HoaDonChiTiet", b =>
                 {
-                    b.Navigation("Thongtinhanghoas");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.HoaDon", "MaHoaDonNavigation")
+                        .WithMany("HoaDonChiTiets")
+                        .HasForeignKey("MaHoaDon")
+                        .HasConstraintName("FK__HoaDonChi__MaHoa__2E1BDC42")
+                        .IsRequired();
+
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.ThongTinSanPham", "MaThongTinNavigation")
+                        .WithMany("HoaDonChiTiets")
+                        .HasForeignKey("MaThongTin")
+                        .HasConstraintName("FK__HoaDonChi__MaTho__2F10007B");
+
+                    b.Navigation("MaHoaDonNavigation");
+
+                    b.Navigation("MaThongTinNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.HOADON", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.NhanVien", b =>
                 {
-                    b.Navigation("Hoadonchitiets");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.ChucVu", "MaChucVuNavigation")
+                        .WithMany("NhanViens")
+                        .HasForeignKey("MaChucVu")
+                        .HasConstraintName("FK__NhanVien__MaChuc__1273C1CD")
+                        .IsRequired();
+
+                    b.Navigation("MaChucVuNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.LOAIHANG", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.PhieuNhap", b =>
                 {
-                    b.Navigation("Thongtinhanghoas");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.NhaCungCap", "MaNhaCungCapNavigation")
+                        .WithMany("PhieuNhaps")
+                        .HasForeignKey("MaNhaCungCap")
+                        .HasConstraintName("FK__PhieuNhap__MaNha__24927208")
+                        .IsRequired();
+
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.NhanVien", "MaNhanVienNavigation")
+                        .WithMany("PhieuNhaps")
+                        .HasForeignKey("MaNhanVien")
+                        .HasConstraintName("FK__PhieuNhap__MaNha__25869641")
+                        .IsRequired();
+
+                    b.Navigation("MaNhaCungCapNavigation");
+
+                    b.Navigation("MaNhanVienNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHACUNGCAP", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.PhieuNhapChiTiet", b =>
                 {
-                    b.Navigation("Phieunhaps");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.PhieuNhap", "MaPhieuNhapNavigation")
+                        .WithMany("PhieuNhapChiTiets")
+                        .HasForeignKey("MaPhieuNhap")
+                        .HasConstraintName("FK__PhieuNhap__MaPhi__31EC6D26")
+                        .IsRequired();
+
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.ThongTinSanPham", "MaThongTinNavigation")
+                        .WithMany("PhieuNhapChiTiets")
+                        .HasForeignKey("MaThongTin")
+                        .HasConstraintName("FK__PhieuNhap__MaTho__32E0915F")
+                        .IsRequired();
+
+                    b.Navigation("MaPhieuNhapNavigation");
+
+                    b.Navigation("MaThongTinNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.NHANVIEN", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ThongTinSanPham", b =>
                 {
-                    b.Navigation("Hoadons");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.DonViTinh", "MaDonViTinhNavigation")
+                        .WithMany("ThongTinSanPhams")
+                        .HasForeignKey("MaDonViTinh")
+                        .HasConstraintName("FK__ThongTinS__MaDon__286302EC")
+                        .IsRequired();
 
-                    b.Navigation("Phieunhaps");
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.LoaiHang", "MaLoaiHangNavigation")
+                        .WithMany("ThongTinSanPhams")
+                        .HasForeignKey("MaLoaiHang")
+                        .HasConstraintName("FK__ThongTinS__MaLoa__29572725")
+                        .IsRequired();
+
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.SanPham", "MaSanPhamNavigation")
+                        .WithMany("ThongTinSanPhams")
+                        .HasForeignKey("MaSanPham")
+                        .HasConstraintName("FK__ThongTinS__MaSan__2B3F6F97")
+                        .IsRequired();
+
+                    b.HasOne("_1_DAL_DataAccesLayer.Models.XuatXu", "MaXuatXuNavigation")
+                        .WithMany("ThongTinSanPhams")
+                        .HasForeignKey("MaXuatXu")
+                        .HasConstraintName("FK__ThongTinS__MaXua__2A4B4B5E")
+                        .IsRequired();
+
+                    b.Navigation("MaDonViTinhNavigation");
+
+                    b.Navigation("MaLoaiHangNavigation");
+
+                    b.Navigation("MaSanPhamNavigation");
+
+                    b.Navigation("MaXuatXuNavigation");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.PHIEUNHAP", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ChatLieu", b =>
                 {
-                    b.Navigation("Chitietphieunhaps");
+                    b.Navigation("DonViTinhs");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.THONGTINHANGHOA", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ChucVu", b =>
                 {
-                    b.Navigation("Chitietphieunhaps");
-
-                    b.Navigation("Hoadonchitiets");
+                    b.Navigation("NhanViens");
                 });
 
-            modelBuilder.Entity("_1_DAL_DataAccesLayer.Entities.XUATXU", b =>
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.DonViTinh", b =>
                 {
-                    b.Navigation("Thongtinhanghoas");
+                    b.Navigation("ThongTinSanPhams");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.HoaDon", b =>
+                {
+                    b.Navigation("HoaDonChiTiets");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.LoaiHang", b =>
+                {
+                    b.Navigation("ThongTinSanPhams");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.NhaCungCap", b =>
+                {
+                    b.Navigation("PhieuNhaps");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.NhanVien", b =>
+                {
+                    b.Navigation("HoaDons");
+
+                    b.Navigation("PhieuNhaps");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.PhieuNhap", b =>
+                {
+                    b.Navigation("PhieuNhapChiTiets");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.SanPham", b =>
+                {
+                    b.Navigation("ThongTinSanPhams");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.ThongTinSanPham", b =>
+                {
+                    b.Navigation("HoaDonChiTiets");
+
+                    b.Navigation("PhieuNhapChiTiets");
+                });
+
+            modelBuilder.Entity("_1_DAL_DataAccesLayer.Models.XuatXu", b =>
+                {
+                    b.Navigation("ThongTinSanPhams");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceThongTinHangHoa: IServiceThongTinHangHoa
     {
-        private DatabaseContext1 _dbContext;
-        private List<THONGTINHANGHOA> _lstHangHoa;
+        private DatabaseContext _dbContext;
+        private List<ThongTinSanPham> _lstHangHoa;
 
         public ServiceThongTinHangHoa()
         {
-            _dbContext = new DatabaseContext1();
-            _lstHangHoa = new List<THONGTINHANGHOA>();
-            _dbContext.THONGTINHANGHOAS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstHangHoa = new List<ThongTinSanPham>();
+            _lstHangHoa = _dbContext.ThongTinSanPhams.ToList();
         }
-        public string ThemTTHH(THONGTINHANGHOA tthh)
+        public string ThemTTHH(ThongTinSanPham tthh)
         {
-            _dbContext.THONGTINHANGHOAS.Add(tthh);
+            _dbContext.ThongTinSanPhams.Add(tthh);
             return "Thêm Thành Công";
         }
 
-        public string SuaTTHH(THONGTINHANGHOA tthh)
+        public string SuaTTHH(ThongTinSanPham tthh)
         {
-            _dbContext.THONGTINHANGHOAS.Update(tthh);
+            _dbContext.ThongTinSanPhams.Update(tthh);
             return "Sửa Thành Công";
         }
 
-        public string XoaTTHH(THONGTINHANGHOA tthh)
+        public string XoaTTHH(ThongTinSanPham tthh)
         {
-            tthh.TRANGTHAI = 1;
-            if (_dbContext.THONGTINHANGHOAS.ToList().Any(c => c.MATHONGTIN == tthh.MATHONGTIN))
+            tthh.TrangThai = 1;
+            if (_dbContext.ThongTinSanPhams.ToList().Any(c => c.MaThongTin == tthh.MaThongTin))
             {
-                _dbContext.THONGTINHANGHOAS.Update(tthh);
+                _dbContext.ThongTinSanPhams.Update(tthh);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -53,7 +53,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Thêm Thành Công";
         }
 
-        public List<THONGTINHANGHOA> GetLstTTHangHoas()
+        public List<ThongTinSanPham> GetLstTTHangHoas()
         {
             return _lstHangHoa;
         }

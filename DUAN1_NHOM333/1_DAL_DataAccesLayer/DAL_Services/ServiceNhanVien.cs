@@ -4,42 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceNhanVien:IServiceNhanVien
     {
-        private DatabaseContext1 _dbContext;
-        private List<NHANVIEN> _lstNhanviens;
+        private DatabaseContext _dbContext;
+        private List<NhanVien> _lstNhanviens;
 
         public ServiceNhanVien()
         {
-            _dbContext = new DatabaseContext1();
-            _lstNhanviens = new List<NHANVIEN>();
-            _dbContext.NHANVIENS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstNhanviens = new List<NhanVien>();
+            _dbContext.NhanViens.ToList();
         }
-        public string ThemNV(NHANVIEN nv)
+        public string ThemNV(NhanVien nv)
         {
-            _dbContext.NHANVIENS.Add(nv);
+            _dbContext.NhanViens.Add(nv);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string SuaNV(NHANVIEN nv)
+        public string SuaNV(NhanVien nv)
         {
-            _dbContext.NHANVIENS.Update(nv);
+            _dbContext.NhanViens.Update(nv);
             _dbContext.SaveChanges();
             return "Sưa Thành Công";
         }
 
-        public string XoaNV(NHANVIEN nv)
+        public string XoaNV(NhanVien nv)
         {
-            nv.TRANGTHAI = 1;
-            if (_dbContext.NHANVIENS.ToList().Any(c => c.MANHANVIEN == nv.MANHANVIEN))
+            nv.TrangThai = 1;
+            if (_dbContext.NhanViens.ToList().Any(c => c.MaNhanVien == nv.MaNhanVien))
             {
-                _dbContext.NHANVIENS.Update(nv);
+                _dbContext.NhanViens.Update(nv);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -49,7 +49,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             }
         }
 
-        public List<NHANVIEN> GetLstNhanVien()
+        public List<NhanVien> GetLstNhanVien()
         {
             return _lstNhanviens;
         }

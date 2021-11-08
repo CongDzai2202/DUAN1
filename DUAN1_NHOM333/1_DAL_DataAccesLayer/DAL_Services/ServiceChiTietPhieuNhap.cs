@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceChiTietPhieuNhap: IServiceChiTietPhieuNhap
     {
-        private DatabaseContext1 _dbContext;
-        private List<CHITIETPHIEUNHAP> _lstChiTietPhieuNhaps;
+        private DatabaseContext _dbContext;
+        private List<PhieuNhapChiTiet> _lstChiTietPhieuNhaps;
 
         public ServiceChiTietPhieuNhap()
         {
-            _dbContext = new DatabaseContext1();
-            _lstChiTietPhieuNhaps = new List<CHITIETPHIEUNHAP>();
-            _dbContext.CHITIETPHIEUNHAPS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstChiTietPhieuNhaps = new List<PhieuNhapChiTiet>();
+            _dbContext.PhieuNhapChiTiets.ToList();
         }
-        public string ThemCTPN(CHITIETPHIEUNHAP ctpn)
+        public string ThemCTPN(PhieuNhapChiTiet ctpn)
         {
-            _dbContext.CHITIETPHIEUNHAPS.Add(ctpn);
+            _dbContext.PhieuNhapChiTiets.Add(ctpn);
             return "Thêm Thành Công";
         }
 
-        public string SuaCTPN(CHITIETPHIEUNHAP ctpn)
+        public string SuaCTPN(PhieuNhapChiTiet ctpn)
         {
-            _dbContext.CHITIETPHIEUNHAPS.Update(ctpn);
+            _dbContext.PhieuNhapChiTiets.Update(ctpn);
             return "Sửa Thành Công";
         }
 
-        public string XoaCTPN(CHITIETPHIEUNHAP ctpn)
+        public string XoaCTPN(PhieuNhapChiTiet ctpn)
         {
-            ctpn.TRANGTHAI = 1;
-            if (_dbContext.CHITIETPHIEUNHAPS.ToList().Any(c => c.MACHITIETPHIEUNHAP == ctpn.MACHITIETPHIEUNHAP))
+            ctpn.TrangThai = 1;
+            if (_dbContext.PhieuNhapChiTiets.ToList().Any(c => c.MaCtphieuNhap == ctpn.MaCtphieuNhap))
             {
-                _dbContext.CHITIETPHIEUNHAPS.Update(ctpn);
+                _dbContext.PhieuNhapChiTiets.Update(ctpn);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -53,7 +53,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Lưu Thành Công";
         }
 
-        public List<CHITIETPHIEUNHAP> GetLstChiTietPhieuNhaps()
+        public List<PhieuNhapChiTiet> GetLstChiTietPhieuNhaps()
         {
             return _lstChiTietPhieuNhaps;
         }

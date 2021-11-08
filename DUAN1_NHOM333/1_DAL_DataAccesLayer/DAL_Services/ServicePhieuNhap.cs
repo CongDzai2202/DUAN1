@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServicePhieuNhap:IServicePhieuNhap
     {
-        private DatabaseContext1 _dbContext;
-        private List<PHIEUNHAP> _lstPhieuNhap;
+        private DatabaseContext _dbContext;
+        private List<PhieuNhap> _lstPhieuNhap;
 
         public ServicePhieuNhap()
         {
-            _dbContext = new DatabaseContext1();
-            _lstPhieuNhap = new List<PHIEUNHAP>();
-            _dbContext.PHIEUNHAPS.ToList();
+            _dbContext = new DatabaseContext();
+            _lstPhieuNhap = new List<PhieuNhap>();
+            _dbContext.PhieuNhaps.ToList();
         }
-        public string ThemPN(PHIEUNHAP pn)
+        public string ThemPN(PhieuNhap pn)
         {
-            _dbContext.PHIEUNHAPS.Add(pn);
+            _dbContext.PhieuNhaps.Add(pn);
             return "Thêm Thành Công";
         }
 
-        public string SuaPN(PHIEUNHAP pn)
+        public string SuaPN(PhieuNhap pn)
         {
-            _dbContext.PHIEUNHAPS.Update(pn);
+            _dbContext.PhieuNhaps.Update(pn);
             return "Thêm Thành Công";
         }
 
-        public string XoaPN(PHIEUNHAP pn)
+        public string XoaPN(PhieuNhap pn)
         {
-            pn.TRANGTHAI = 1;
-            if (_dbContext.PHIEUNHAPS.ToList().Any(c => c.MAPHIEUNHAP == pn.MAPHIEUNHAP))
+            pn.TrangThai = 1;
+            if (_dbContext.PhieuNhaps.ToList().Any(c => c.MaPhieuNhap == pn.MaPhieuNhap))
             {
-                _dbContext.PHIEUNHAPS.Update(pn);
+                _dbContext.PhieuNhaps.Update(pn);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -53,7 +53,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Lưu Thành Công";
         }
 
-        public List<PHIEUNHAP> GetLstPhieunhaps()
+        public List<PhieuNhap> GetLstPhieunhaps()
         {
             return _lstPhieuNhap;
         }

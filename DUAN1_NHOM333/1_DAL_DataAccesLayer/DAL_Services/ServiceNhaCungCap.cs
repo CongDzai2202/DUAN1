@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
-using _1_DAL_DataAccesLayer.DatabaseContext;
-using _1_DAL_DataAccesLayer.Entities;
+using _1_DAL_DataAccesLayer.Context;
+using _1_DAL_DataAccesLayer.Models;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
     public class ServiceNhaCungCap:IServiceNhaCungCap
     {
-        private DatabaseContext1 _dbContext;
-        private List<NHACUNGCAP> _lstNhaCungCap;
+        private DatabaseContext _dbContext;
+        private List<NhaCungCap> _lstNhaCungCap;
         public ServiceNhaCungCap()
         {
-            _dbContext = new DatabaseContext1();
-            _lstNhaCungCap = new List<NHACUNGCAP>();
+            _dbContext = new DatabaseContext();
+            _lstNhaCungCap = new List<NhaCungCap>();
         }
-        public string ThemHD(NHACUNGCAP ncc)
+        public string ThemHD(NhaCungCap ncc)
         {
-            _dbContext.NHACUNGCAPS.Add(ncc);
+            _dbContext.NhaCungCaps.Add(ncc);
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
-        public string SuaHD(NHACUNGCAP ncc)
+        public string SuaHD(NhaCungCap ncc)
         {
-            _dbContext.NHACUNGCAPS.Update(ncc);
+            _dbContext.NhaCungCaps.Update(ncc);
             _dbContext.SaveChanges();
             return "Sửa Thành Công";
         }
 
-        public string XoaHD(NHACUNGCAP ncc)
+        public string XoaHD(NhaCungCap ncc)
         {
-            ncc.TRANGTHAI = 1;
-            if (_dbContext.NHACUNGCAPS.ToList().Any(c => c.MANHACUNGCAP == ncc.MANHACUNGCAP))
+            ncc.TrangThai = 1;
+            if (_dbContext.NhaCungCaps.ToList().Any(c => c.MaNhaCungCap == ncc.MaNhaCungCap))
             {
-                _dbContext.NHACUNGCAPS.Update(ncc);
+                _dbContext.NhaCungCaps.Update(ncc);
                 _dbContext.SaveChanges();
                 return "Xóa Thành Công";
             }
@@ -47,7 +47,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             }
         }
 
-        public List<NHACUNGCAP> GetLstNhaCungCaps()
+        public List<NhaCungCap> GetLstNhaCungCaps()
         {
             return _lstNhaCungCap;
         }
