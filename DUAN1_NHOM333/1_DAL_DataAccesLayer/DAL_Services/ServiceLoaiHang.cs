@@ -18,7 +18,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstLoaiHangs = new List<LoaiHang>();
-            _dbContext.LoaiHangs.ToList();
+            _lstLoaiHangs=_dbContext.LoaiHangs.ToList();
 
         }
         public string ThemLH(LoaiHang lh)

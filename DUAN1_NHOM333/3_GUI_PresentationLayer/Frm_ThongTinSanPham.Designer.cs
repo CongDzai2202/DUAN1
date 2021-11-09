@@ -55,6 +55,8 @@ namespace _3_GUI_PresentationLayer
             this.dgid_Data = new System.Windows.Forms.DataGridView();
             this.btn_Them = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtMaSanPham = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgid_Data)).BeginInit();
@@ -116,7 +118,7 @@ namespace _3_GUI_PresentationLayer
             // txtGiaBan
             // 
             this.txtGiaBan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtGiaBan.Location = new System.Drawing.Point(660, 24);
+            this.txtGiaBan.Location = new System.Drawing.Point(645, 93);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(317, 39);
             this.txtGiaBan.TabIndex = 12;
@@ -124,7 +126,7 @@ namespace _3_GUI_PresentationLayer
             // txtSoluong
             // 
             this.txtSoluong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSoluong.Location = new System.Drawing.Point(660, 91);
+            this.txtSoluong.Location = new System.Drawing.Point(645, 147);
             this.txtSoluong.Name = "txtSoluong";
             this.txtSoluong.Size = new System.Drawing.Size(317, 39);
             this.txtSoluong.TabIndex = 12;
@@ -132,7 +134,7 @@ namespace _3_GUI_PresentationLayer
             // txtTrongLuong
             // 
             this.txtTrongLuong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTrongLuong.Location = new System.Drawing.Point(660, 161);
+            this.txtTrongLuong.Location = new System.Drawing.Point(645, 192);
             this.txtTrongLuong.Name = "txtTrongLuong";
             this.txtTrongLuong.Size = new System.Drawing.Size(317, 39);
             this.txtTrongLuong.TabIndex = 12;
@@ -141,7 +143,7 @@ namespace _3_GUI_PresentationLayer
             // 
             this.cbxXuatXu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbxXuatXu.FormattingEnabled = true;
-            this.cbxXuatXu.Location = new System.Drawing.Point(660, 339);
+            this.cbxXuatXu.Location = new System.Drawing.Point(645, 370);
             this.cbxXuatXu.Name = "cbxXuatXu";
             this.cbxXuatXu.Size = new System.Drawing.Size(317, 40);
             this.cbxXuatXu.TabIndex = 13;
@@ -149,7 +151,7 @@ namespace _3_GUI_PresentationLayer
             // txtMoTa
             // 
             this.txtMoTa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtMoTa.Location = new System.Drawing.Point(660, 385);
+            this.txtMoTa.Location = new System.Drawing.Point(645, 416);
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Size = new System.Drawing.Size(317, 39);
             this.txtMoTa.TabIndex = 12;
@@ -157,7 +159,7 @@ namespace _3_GUI_PresentationLayer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(551, 33);
+            this.label1.Location = new System.Drawing.Point(540, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 25);
             this.label1.TabIndex = 14;
@@ -166,7 +168,7 @@ namespace _3_GUI_PresentationLayer
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(542, 100);
+            this.label3.Location = new System.Drawing.Point(527, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 25);
             this.label3.TabIndex = 14;
@@ -175,7 +177,7 @@ namespace _3_GUI_PresentationLayer
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(518, 170);
+            this.label4.Location = new System.Drawing.Point(503, 201);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 25);
             this.label4.TabIndex = 14;
@@ -184,7 +186,7 @@ namespace _3_GUI_PresentationLayer
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(527, 233);
+            this.label5.Location = new System.Drawing.Point(512, 264);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 25);
             this.label5.TabIndex = 14;
@@ -193,7 +195,7 @@ namespace _3_GUI_PresentationLayer
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(530, 289);
+            this.label6.Location = new System.Drawing.Point(515, 320);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 25);
             this.label6.TabIndex = 14;
@@ -202,7 +204,7 @@ namespace _3_GUI_PresentationLayer
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(542, 352);
+            this.label7.Location = new System.Drawing.Point(527, 383);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 25);
             this.label7.TabIndex = 14;
@@ -211,7 +213,7 @@ namespace _3_GUI_PresentationLayer
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(555, 399);
+            this.label8.Location = new System.Drawing.Point(540, 430);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 25);
             this.label8.TabIndex = 14;
@@ -221,7 +223,7 @@ namespace _3_GUI_PresentationLayer
             // 
             this.cbxDonViTinh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbxDonViTinh.FormattingEnabled = true;
-            this.cbxDonViTinh.Location = new System.Drawing.Point(660, 224);
+            this.cbxDonViTinh.Location = new System.Drawing.Point(645, 255);
             this.cbxDonViTinh.Name = "cbxDonViTinh";
             this.cbxDonViTinh.Size = new System.Drawing.Size(317, 40);
             this.cbxDonViTinh.TabIndex = 15;
@@ -230,7 +232,7 @@ namespace _3_GUI_PresentationLayer
             // 
             this.cbxLoaiHang.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbxLoaiHang.FormattingEnabled = true;
-            this.cbxLoaiHang.Location = new System.Drawing.Point(660, 280);
+            this.cbxLoaiHang.Location = new System.Drawing.Point(645, 311);
             this.cbxLoaiHang.Name = "cbxLoaiHang";
             this.cbxLoaiHang.Size = new System.Drawing.Size(317, 40);
             this.cbxLoaiHang.TabIndex = 15;
@@ -244,6 +246,7 @@ namespace _3_GUI_PresentationLayer
             this.dgid_Data.RowTemplate.Height = 33;
             this.dgid_Data.Size = new System.Drawing.Size(1077, 225);
             this.dgid_Data.TabIndex = 16;
+            this.dgid_Data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgid_Data_CellClick);
             // 
             // btn_Them
             // 
@@ -263,6 +266,25 @@ namespace _3_GUI_PresentationLayer
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(503, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(135, 25);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Mã Sản Phẩm : ";
+            // 
+            // txtMaSanPham
+            // 
+            this.txtMaSanPham.Enabled = false;
+            this.txtMaSanPham.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMaSanPham.Location = new System.Drawing.Point(645, 26);
+            this.txtMaSanPham.Name = "txtMaSanPham";
+            this.txtMaSanPham.Size = new System.Drawing.Size(317, 39);
+            this.txtMaSanPham.TabIndex = 12;
             // 
             // Frm_ThongTinSanPham
             // 
@@ -280,11 +302,13 @@ namespace _3_GUI_PresentationLayer
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxXuatXu);
             this.Controls.Add(this.txtMoTa);
             this.Controls.Add(this.txtTrongLuong);
             this.Controls.Add(this.txtSoluong);
+            this.Controls.Add(this.txtMaSanPham);
             this.Controls.Add(this.txtGiaBan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnStart);
@@ -331,5 +355,7 @@ namespace _3_GUI_PresentationLayer
         private System.Windows.Forms.DataGridView dgid_Data;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMaSanPham;
     }
 }

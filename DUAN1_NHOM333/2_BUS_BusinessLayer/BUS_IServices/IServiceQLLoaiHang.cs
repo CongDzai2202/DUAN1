@@ -9,7 +9,7 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
 {
     public interface IServiceQLLoaiHang
     {
-        List<LoaiHang> GetLstLoaiHangs();
+        List<LoaiHang> GetLstLoaiSanPham();
         public string ThemHDCT(LoaiHang ld);
         public string SuaHDCT(LoaiHang lh);
         public string XoaHDCT(LoaiHang ld);

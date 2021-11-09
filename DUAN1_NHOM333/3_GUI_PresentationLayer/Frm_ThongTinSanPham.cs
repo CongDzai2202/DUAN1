@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _1_DAL_DataAccesLayer.Models;
 using _2_BUS_BusinessLayer.BUS_IServices;
 using _2_BUS_BusinessLayer.BUS_Services;
 using AForge.Video.DirectShow;
@@ -17,16 +18,24 @@ namespace _3_GUI_PresentationLayer
     public partial class Frm_ThongTinSanPham : Form
     {
         private IServiceQLCTSanPham _iQLCTSanPham;
+        private IServiceQLLoaiHang _iServiceQLLoaiHang;
         public Frm_ThongTinSanPham()
         {
             _iQLCTSanPham = new ServiceQLTTSanPham();
+            _iServiceQLLoaiHang = new ServiceLoaiHang();
             InitializeComponent();
             LoadData();
+            LoadCMBLoaiHang();
         }
 
         void LoadCMBLoaiHang()
         {
-            
+            foreach (var x in _iServiceQLLoaiHang.GetLstLoaiSanPham().ToList())
+            {
+                cbxLoaiHang.Items.Add(x.MaLoaiHang);
+            }
+
+            //cbxLoaiHang.SelectedIndex = 0;
         }
 
         void LoadData()
@@ -47,14 +56,48 @@ namespace _3_GUI_PresentationLayer
             {
                 dgid_Data.Rows.Add(x.MaThongTin, x.DonGia, x.SoLuong,
                     x.TrangThai == 1 ? "Hoạt Động" : "Không Hoạt Đông", x.Barcode, x.MaDonViTinh, x.MaLoaiHang,
-                    x.TrongLuong, x.MoTa);
+                    x.MaXuatXu,x.TrongLuong, x.MoTa);
             }
+        }
+        private void dgid_Data_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            if (rowindex >= _iQLCTSanPham.GetLstThongTinSanPhams().Count || rowindex < 0) return;
+            txtMaSanPham.Text = dgid_Data.Rows[rowindex].Cells[0].Value.ToString();
+            txtGiaBan.Text = dgid_Data.Rows[rowindex].Cells[1].Value.ToString();
+            txtSoluong.Text = dgid_Data.Rows[rowindex].Cells[2].Value.ToString();
+            txtBarcode.Text = dgid_Data.Rows[rowindex].Cells[4].Value.ToString();
+            cbxDonViTinh.Text = dgid_Data.Rows[rowindex].Cells[5].Value.ToString();
+            cbxXuatXu.Text = dgid_Data.Rows[rowindex].Cells[7].Value.ToString();
+            cbxLoaiHang.Text = dgid_Data.Rows[rowindex].Cells[6].Value.ToString();
+            txtTrongLuong.Text = dgid_Data.Rows[rowindex].Cells[8].Value.ToString();
+            txtMoTa.Text = dgid_Data.Rows[rowindex].Cells[9].Value.ToString();
+
         }
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            
+            ThongTinSanPham sp = new ThongTinSanPham();
+            sp.Id = _iQLCTSanPham.GetLstThongTinSanPhams().Max(c => c.Id) + 1;
+            sp.MaThongTin = "MTTSP" + sp.Id;
+            sp.Barcode = txtBarcode.Text;
+            sp.TrangThai = 1;
+            sp.DonGia = Convert.ToInt32(txtGiaBan.Text);
+            sp.SoLuong = Convert.ToInt32(txtSoluong.Text);
+            sp.MaDonViTinh = cbxDonViTinh.Text;
+            sp.MaLoaiHang = cbxLoaiHang.Text;
+            sp.MaXuatXu = cbxXuatXu.Text;
+            sp.MoTa = txtMoTa.Text;
+            sp.MaSanPham = "SP1";
+            sp.TrongLuong = Convert.ToDouble(txtTrongLuong.Text);
+            _iQLCTSanPham.ThemSP(sp);
+            _iQLCTSanPham.LuuSP();
+            MessageBox.Show("Thêm Thành Công");
 
         }
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        } 
         #region Camera
 
 
@@ -106,6 +149,8 @@ namespace _3_GUI_PresentationLayer
                 }
             }
         }
+
+
 
         #endregion
 

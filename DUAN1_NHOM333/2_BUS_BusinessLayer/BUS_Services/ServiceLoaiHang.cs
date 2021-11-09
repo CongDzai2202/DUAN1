@@ -17,7 +17,7 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             _iServiceLoaiHang = new _1_DAL_DataAccesLayer.DAL_Services.ServiceLoaiHang();
         }
-        public List<LoaiHang> GetLstLoaiHangs()
+        public List<LoaiHang> GetLstLoaiSanPham()
         {
             return _iServiceLoaiHang.GetLstLoaiHang();
         }
