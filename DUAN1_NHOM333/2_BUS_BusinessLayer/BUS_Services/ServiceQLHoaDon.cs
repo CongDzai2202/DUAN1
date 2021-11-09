@@ -18,7 +18,7 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             _iServiceHoaDon = new ServiceHoaDon();
         }
-        public List<HoaDon> getLstHoaDon()
+        public List<HoaDon> getLstHoaDonBUS()
         {
             return _iServiceHoaDon.GetLstHoaDon();
         }

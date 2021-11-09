@@ -9,7 +9,7 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
 {
     public interface IServiceQLHoaDon
     {
-        List<HoaDon> getLstHoaDon();
+        List<HoaDon> getLstHoaDonBUS();
         public string ThemHD(HoaDon hd);
         public string SuaHD(HoaDon hd);
         public string XoaHD(HoaDon hd);

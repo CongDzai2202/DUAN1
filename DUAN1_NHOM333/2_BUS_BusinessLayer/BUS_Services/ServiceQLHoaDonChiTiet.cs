@@ -18,7 +18,7 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             _iServiceHoaDonChiTiet = new ServiceHoaDonChiTiet();
         }
-        public List<HoaDonChiTiet> getLstHoaDonChiTiet()
+        public List<HoaDonChiTiet> getLstHoaDonChiTietBUS()
         {
             return _iServiceHoaDonChiTiet.GetHoaDonChiTiets();
         }

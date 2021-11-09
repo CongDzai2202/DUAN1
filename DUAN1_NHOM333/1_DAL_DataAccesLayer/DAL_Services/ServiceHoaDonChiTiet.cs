@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -17,11 +18,12 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstHoaDonChiTiets = new List<HoaDonChiTiet>();
-            _dbContext.HoaDonChiTiets.ToList();
+            _lstHoaDonChiTiets=_dbContext.HoaDonChiTiets.AsNoTracking().ToList();
         }
 
         public string ThemHDCT(HoaDonChiTiet hdct)
         {
+            //hdct.Id = GetHoaDonChiTiets().Max(c => c.Id) + 1;
             _dbContext.HoaDonChiTiets.Add(hdct);
             return "Thêm Thành Công";
         }

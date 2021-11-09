@@ -10,7 +10,7 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
 {
     public interface IServiceQLHoaDonChiTiet
     {
-        List<HoaDonChiTiet> getLstHoaDonChiTiet();
+        List<HoaDonChiTiet> getLstHoaDonChiTietBUS();
         public string ThemHDCT(HoaDonChiTiet hdct);
         public string SuaHDCT(HoaDonChiTiet hdct);
         public string XoaHDCT(HoaDonChiTiet hdct);

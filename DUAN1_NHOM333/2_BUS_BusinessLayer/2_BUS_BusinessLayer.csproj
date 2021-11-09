@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BUS_Models\" />
     <Folder Include="BUS_Utilities\" />
   </ItemGroup>
 
