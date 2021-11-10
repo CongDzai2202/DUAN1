@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -17,7 +18,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstChucVus = new List<ChucVu>();
-            _lstChucVus = _dbContext.ChucVus.ToList();
+            _lstChucVus = _dbContext.ChucVus.AsNoTracking().ToList();
         }
         public string Them(ChucVu cv)
         {

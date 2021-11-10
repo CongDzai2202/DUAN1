@@ -152,8 +152,18 @@ namespace _3_GUI_PresentationLayer
 
 
 
+
         #endregion
 
-       
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            dgid_Data.ColumnCount = 1;
+            dgid_Data.Columns[0].Name = "Đơn Giá";
+            dgid_Data.Rows.Clear();
+            foreach (var x in _iQLCTSanPham.GetLstThongTinSanPhams().Where(c => c.Barcode.StartsWith(txtBarcode.Text)))
+            {
+                dgid_Data.Rows.Add(x.DonGia, x.MaSanPham);
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -18,7 +19,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstPhieuNhap = new List<PhieuNhap>();
-            _dbContext.PhieuNhaps.ToList();
+            _lstPhieuNhap=_dbContext.PhieuNhaps.AsNoTracking().ToList();
         }
         public string ThemPN(PhieuNhap pn)
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -18,7 +19,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstNhanviens = new List<NhanVien>();
-            _dbContext.NhanViens.ToList();
+            _lstNhanviens=_dbContext.NhanViens.AsNoTracking().ToList();
         }
         public string ThemNV(NhanVien nv)
         {

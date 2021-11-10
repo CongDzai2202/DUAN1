@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -18,7 +19,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstLoaiHangs = new List<LoaiHang>();
-            _lstLoaiHangs=_dbContext.LoaiHangs.ToList();
+            _lstLoaiHangs=_dbContext.LoaiHangs.AsNoTracking().ToList();
 
         }
         public string ThemLH(LoaiHang lh)

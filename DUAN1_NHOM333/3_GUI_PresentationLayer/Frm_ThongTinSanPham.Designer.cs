@@ -87,6 +87,7 @@ namespace _3_GUI_PresentationLayer
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(354, 31);
             this.txtBarcode.TabIndex = 9;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             // 
             // pictureBox
             // 
