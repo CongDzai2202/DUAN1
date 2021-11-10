@@ -23,12 +23,14 @@ namespace _3_GUI_PresentationLayer
         private IServiceQLHoaDon _iServiceQlHoaDon;
         private IServiceQLHoaDonChiTiet _iServiceQlHoaDonChiTiet;
         private List<BUS_HoaDonChiTiet> _lstBusHoaDonChiTiets;
+        private IServiceQLHienThi _iServiceQlHienThi;
         public Frm_BanHang()
         {
             _lstBusHoaDonChiTiets = new List<BUS_HoaDonChiTiet>();
             _iServiceQlHoaDon = new ServiceQLHoaDon();
             _iServiceQlHoaDonChiTiet = new ServiceQLHoaDonChiTiet();
             _iServiceQlctSanPham = new ServiceQLTTSanPham();
+            _iServiceQlHienThi = new ServiceQLHienThi();
             InitializeComponent();
             LoadCMBMaThongTin();
         }
@@ -43,17 +45,38 @@ namespace _3_GUI_PresentationLayer
 
         void Loaddata()
         {
-            //var c = from c in _lstBusHoaDonChiTiets group c by c.TenSanPham into g select new {TenSanPham = g.Key};
-                dgrid_data.ColumnCount = 5;
+            _lstBusHoaDonChiTiets = (from x in _lstBusHoaDonChiTiets
+                group x by new
+                {
+
+
+                    x.TenSanPham,
+                    x.BarCode,
+                    
+                }
+                into g
+                select new BUS_HoaDonChiTiet()
+                {
+                    TenSanPham = g.Key.TenSanPham,
+                    BarCode =g.Key.BarCode,
+                    SoLuong = g.Sum(c=>c.SoLuong),
+                    // ThanhTien = g.
+                }).ToList();        
+
+                dgrid_data.ColumnCount = 10;
             dgrid_data.Columns[0].Name = "Mã Sản Phẩm";
             dgrid_data.Columns[1].Name = "Mã Hóa Đơn";
             dgrid_data.Columns[2].Name = "Đơn Giá";
             dgrid_data.Columns[3].Name = "Trạng Thái";
+            dgrid_data.Columns[4].Name = "Sô Lượng";
+            dgrid_data.Columns[5].Name = "BarCode";
+            dgrid_data.Columns[5].Name = "Tổng Tiền";
+
             dgrid_data.Rows.Clear();
             
             foreach (var x in _lstBusHoaDonChiTiets) 
             { 
-                dgrid_data.Rows.Add(x.TenSanPham,x.MaHoaDon,x.DonGia,x.TrangThai ==1?"Hoạt Động":"Không Hoạt Đông",x.SoLuong);
+                dgrid_data.Rows.Add(x.TenSanPham,x.MaHoaDon,x.DonGia,x.TrangThai ==1?"Hoạt Động":"Không Hoạt Đông",x.SoLuong, x.SoLuong * x.DonGia, x.BarCode);
             }
         }
         #region Camera
@@ -107,9 +130,6 @@ namespace _3_GUI_PresentationLayer
         {
 
         }
-
-        #endregion
-
         private void txtBarcode_KeyUp(object sender, KeyEventArgs e)
         {
             // dgrid_data.ColumnCount = 10;
@@ -119,6 +139,9 @@ namespace _3_GUI_PresentationLayer
             //     dgrid_data.Rows.Add(x.MaSanPham);
             // }
         }
+        #endregion
+
+
 
         private void txtBarcode_TextChanged(object sender, EventArgs e)
         {
@@ -164,9 +187,6 @@ namespace _3_GUI_PresentationLayer
 
             #region dem++
 
-            
-
-            
             if (dem == 0)
             {
                 hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 1);

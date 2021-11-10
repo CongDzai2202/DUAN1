@@ -12,4 +12,3 @@ C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\2_BUS_BusinessLayer\obj\D
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\2_BUS_BusinessLayer\obj\Debug\net5.0\2_BUS_BusinessLayer.pdb
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\2_BUS_BusinessLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.dll
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\2_BUS_BusinessLayer\bin\Debug\net5.0\1_DAL_DataAccesLayer.pdb
-C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\2_BUS_BusinessLayer\obj\Debug\net5.0\2_BUS_BusinessLayer.csproj.CopyComplete
