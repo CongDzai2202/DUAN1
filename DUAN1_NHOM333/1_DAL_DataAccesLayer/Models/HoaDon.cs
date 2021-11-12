@@ -21,7 +21,6 @@ namespace _1_DAL_DataAccesLayer.Models
         [Key]
         [StringLength(50)]
         public string MaHoaDon { get; set; }
-        [Required]
         [StringLength(50)]
         public string MaNhanVien { get; set; }
         [Column(TypeName = "date")]

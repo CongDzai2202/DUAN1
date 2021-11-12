@@ -30,6 +30,7 @@ namespace _1_DAL_DataAccesLayer.Models
         public string BarCode { get; set; }
         [StringLength(100)]
         public string GhiChu { get; set; }
+        public double? TienKhachTra { get; set; }
         public int? TrangThai { get; set; }
 
         [ForeignKey(nameof(MaHoaDon))]

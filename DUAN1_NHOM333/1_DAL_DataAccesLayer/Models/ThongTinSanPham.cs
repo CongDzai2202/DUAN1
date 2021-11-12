@@ -22,6 +22,8 @@ namespace _1_DAL_DataAccesLayer.Models
         [Key]
         [StringLength(50)]
         public string MaThongTin { get; set; }
+        [StringLength(50)]
+        public string TenSanPham { get; set; }
         public double? DonGia { get; set; }
         public int? SoLuong { get; set; }
         public double? TrongLuong { get; set; }

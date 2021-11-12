@@ -21,6 +21,8 @@ namespace _1_DAL_DataAccesLayer.Models
         [Key]
         [StringLength(50)]
         public string MaSanPham { get; set; }
+        [StringLength(50)]
+        public string TenSanPham { get; set; }
         public int? TrangThai { get; set; }
 
         [InverseProperty(nameof(ThongTinSanPham.MaSanPhamNavigation))]
