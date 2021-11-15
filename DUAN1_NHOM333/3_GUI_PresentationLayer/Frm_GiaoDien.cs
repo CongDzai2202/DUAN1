@@ -59,10 +59,10 @@ namespace _3_GUI_PresentationLayer
                
                 currentBtn.BackColor = Color.FromArgb(37, 36, 81);
                 currentBtn.ForeColor = Color.Gainsboro;
-                currentBtn.TextAlign = ContentAlignment.MiddleCenter;
+                currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Gainsboro;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-                currentBtn.ImageAlign = ContentAlignment.MiddleCenter;
+                currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
