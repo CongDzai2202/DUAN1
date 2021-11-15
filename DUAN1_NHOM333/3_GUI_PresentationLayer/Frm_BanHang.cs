@@ -24,6 +24,7 @@ namespace _3_GUI_PresentationLayer
         private IServiceQLHoaDonChiTiet _iServiceQlHoaDonChiTiet;
         private List<BUS_HoaDonChiTiet> _lstBusHoaDonChiTiets;
         private IServiceQLHienThi _iServiceQlHienThi;
+        public string flag;
         public Frm_BanHang()
         {
             _lstBusHoaDonChiTiets = new List<BUS_HoaDonChiTiet>();
@@ -34,51 +35,101 @@ namespace _3_GUI_PresentationLayer
             InitializeComponent();
             LoadCMBMaThongTin();
         }
-        
+
         public void LoadCMBMaThongTin()
         {
             foreach (var x in _iServiceQlctSanPham.GetLstThongTinSanPhams().ToList())
             {
-                cbMaSanPham.Items.Add(x.MaThongTin);
+                cbMaSanPham.Items.Add(x.TenSanPham);
             }
         }
 
         void Loaddata()
         {
             _lstBusHoaDonChiTiets = (from x in _lstBusHoaDonChiTiets
-                group x by new
-                {
+                                     group x by new
+                                     {
 
-
-                    x.TenSanPham,
-                    x.BarCode,
-                    
-                }
+                                         
+                                         x.TenSanPham,
+                                         x.BarCode,
+                                         x.MaHoaDon,
+                                         x.DonGia,
+                                         x.SoLuong,
+                                         x.TrangThai,
+                                         x.ThanhTien
+                                     }
                 into g
-                select new BUS_HoaDonChiTiet()
-                {
-                    TenSanPham = g.Key.TenSanPham,
-                    BarCode =g.Key.BarCode,
-                    SoLuong = g.Sum(c=>c.SoLuong),
-                    // ThanhTien = g.
-                }).ToList();        
+                                     select new BUS_HoaDonChiTiet()
+                                     {
+                                         TenSanPham = g.Key.TenSanPham,
+                                         BarCode = g.Key.BarCode,
+                                         MaHoaDon = g.Key.MaHoaDon,
+                                         DonGia = g.Key.DonGia,
+                                         TrangThai = g.Key.TrangThai,
+                                         ThanhTien = g.Key.ThanhTien,
+                                         SoLuong = g.Sum(c => c.SoLuong),
+                                         // ThanhTien = g.
+                                     }).ToList();
 
-                dgrid_data.ColumnCount = 10;
-            dgrid_data.Columns[0].Name = "Mã Sản Phẩm";
+            dataGridView1.ColumnCount = 7;
+            dataGridView1.Columns[0].Name = "Tên Sản Phẩm";
+            dataGridView1.Columns[1].Name = "Mã Hóa Đơn";
+            dataGridView1.Columns[2].Name = "Đơn Giá";
+            dataGridView1.Columns[3].Name = "Trạng Thái";
+            dataGridView1.Columns[4].Name = "Sô Lượng";
+            dataGridView1.Columns[5].Name = "Tổng Tiền";
+            dataGridView1.Columns[6].Name = "BarCode";
+            dataGridView1.Rows.Clear();
+
+            foreach (var x in _lstBusHoaDonChiTiets)
+            {
+                dataGridView1.Rows.Add(x.TenSanPham, x.MaHoaDon, x.DonGia, x.TrangThai == 1 ? "Hoạt Động" : "Không Hoạt Đông", x.SoLuong, x.SoLuong * x.DonGia, x.BarCode);
+            }
+        }
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            // var _lst = (from a in _iServiceQlctSanPham.GetLstThongTinSanPhams() join b in _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS() on a.MaThongTin equals b.MaThongTin join c in _iServiceQlHoaDon.getLstHoaDonBUS() on b.MaHoaDon equals c.MaHoaDon
+            //     group a by new
+            //     {
+            //
+            //
+            //         a.TenSanPham,
+            //         a.Barcode,
+            //         c.MaHoaDon,
+            //         a.DonGia,
+            //         a.SoLuong,
+            //         b.TrangThai,
+            //         c.ThanhTien
+            //         
+            //     }
+            //     into g
+            //     select new BUS_HoaDonChiTiet()
+            //     {
+            //         TenSanPham = g.Key.TenSanPham,
+            //         BarCode = g.Key.Barcode,
+            //         MaHoaDon = g.Key.MaHoaDon,
+            //         DonGia = g.Key.DonGia,
+            //         SoLuong = g.Key.SoLuong,
+            //         TrangThai = g.Key.TrangThai,
+            //         ThanhTien = g.Key.ThanhTien,
+            //         // ThanhTien = g.
+            //     }).ToList();
+            dgrid_data.ColumnCount = 7;
+            dgrid_data.Columns[0].Name = "Tên Sản Phẩm";
             dgrid_data.Columns[1].Name = "Mã Hóa Đơn";
             dgrid_data.Columns[2].Name = "Đơn Giá";
             dgrid_data.Columns[3].Name = "Trạng Thái";
             dgrid_data.Columns[4].Name = "Sô Lượng";
-            dgrid_data.Columns[5].Name = "BarCode";
-            dgrid_data.Columns[5].Name = "Tổng Tiền";
-
+            dgrid_data.Columns[5].Name = "Tổng tiền";
+            dgrid_data.Columns[6].Name = "Barcode";
             dgrid_data.Rows.Clear();
-            
-            foreach (var x in _lstBusHoaDonChiTiets) 
-            { 
-                dgrid_data.Rows.Add(x.TenSanPham,x.MaHoaDon,x.DonGia,x.TrangThai ==1?"Hoạt Động":"Không Hoạt Đông",x.SoLuong, x.SoLuong * x.DonGia, x.BarCode);
+            foreach (var x in _iServiceQlHienThi.getLstBusHoaDonChiTiets().Where(c => c.BarCode.StartsWith(txtBarcode.Text)))
+            {
+                dgrid_data.Rows.Add(x.TenSanPham, x.MaHoaDon, x.DonGia, x.TrangThai == 1 ? "Hoạt Động" : "Không Hoạt Đông", x.SoLuong, x.ThanhTien, x.BarCode);
             }
         }
+
         #region Camera
         private FilterInfoCollection filterInfoCollection;
         private VideoCaptureDevice videoCaptureDevice;
@@ -143,23 +194,22 @@ namespace _3_GUI_PresentationLayer
 
 
 
-        private void txtBarcode_TextChanged(object sender, EventArgs e)
-        {
-            dgrid_data.ColumnCount = 1;
-            dgrid_data.Columns[0].Name = "Đơn Giá";
-            dgrid_data.Rows.Clear();
-            foreach (var x in _iServiceQlctSanPham.GetLstThongTinSanPhams().Where(c => c.Barcode.StartsWith(txtBarcode.Text)))
-            {
-                dgrid_data.Rows.Add(x.DonGia,x.MaSanPham);
-            }
-        }
 
         private void dgrid_data_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             int rowindex = e.RowIndex;
             if (rowindex >= _iServiceQlctSanPham.GetLstThongTinSanPhams().Count || rowindex < 0) return;
-            txtDonGia.Text = dgrid_data.Rows[rowindex].Cells[0].Value.ToString();
-            
+            cbMaSanPham.Text = dgrid_data.Rows[rowindex].Cells[0].Value.ToString();
+            flag = dgrid_data.Rows[rowindex].Cells[1].Value.ToString();
+            txtDonGia.Text = dgrid_data.Rows[rowindex].Cells[2].Value.ToString();
+            // rdb_DaThanhToan.Checked = Convert.ToInt32(dgrid_data.Rows[rowindex].Cells[3].Value.ToString())==1;
+            // rdb_ChuaThanhToan.Checked = Convert.ToInt32(dgrid_data.Rows[rowindex].Cells[3].Value.ToString())==2;
+            txt_soluong.Text = dgrid_data.Rows[rowindex].Cells[4].Value.ToString();
+            lbTongTien.Text = dgrid_data.Rows[rowindex].Cells[5].Value.ToString();
+            txtBarcode.Text = dgrid_data.Rows[rowindex].Cells[6].Value.ToString();
+
+
         }
 
         private void btn_ThanhToan_Click(object sender, EventArgs e)
@@ -174,7 +224,7 @@ namespace _3_GUI_PresentationLayer
         // Thêm
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             HoaDon hd = new HoaDon();
             HoaDonChiTiet hdct = new HoaDonChiTiet();
             hd.Id = _iServiceQlHoaDon.getLstHoaDonBUS().Max(c => c.Id) + 1;
@@ -192,7 +242,7 @@ namespace _3_GUI_PresentationLayer
                 hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 1);
                 dem++;
             }
-            else if(dem==1)
+            else if (dem == 1)
             {
                 hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 2);
                 dem++;
@@ -206,16 +256,45 @@ namespace _3_GUI_PresentationLayer
             {
                 hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 4);
                 dem++;
+            }else if (dem == 4)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 5);
+                dem++;
+            }else if (dem == 5)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 6);
+                dem++;
+            }else if (dem == 6)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 7);
+                dem++;
+            }else if (dem == 7)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 8);
+                dem++;
+            }else if (dem == 8)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 9);
+                dem++;
+            }else if (dem == 9)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 10);
+                dem++;
+            }else if (dem == 10)
+            {
+                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 11);
+                dem++;
             }
+
             #endregion
-            hdct.MaThongTin = cbMaSanPham.Text;
+            hdct.MaThongTin = _iServiceQlctSanPham.GetLstThongTinSanPhams().Where(c => c.TenSanPham == cbMaSanPham.Text).Select(c => c.MaThongTin).FirstOrDefault();
             hdct.MaHoaDonChiTiet = "HDCT" + hdct.Id;
             hdct.MaHoaDon = MaHoaDon;
             hdct.DonGia = float.Parse(txtDonGia.Text);
-            hdct.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+            hdct.SoLuong = Convert.ToInt32(txt_soluong.Text);
             hdct.TrangThai = rdb_DaThanhToan.Checked ? 1 : 2;
             hdct.BarCode = txtBarcode.Text;
-            hdct.TenSanPham = txt_TenSanPham.Text;
+            hdct.TenSanPham = cbMaSanPham.Text;
             hdct.GhiChu = txtGhiChu.Text;
             if (dem == 1)
             {
@@ -237,10 +316,10 @@ namespace _3_GUI_PresentationLayer
             bus.MaHoaDonChiTiet = "HDCT" + hd.Id;
             bus.MaHoaDon = hd.MaHoaDon;
             bus.DonGia = float.Parse(txtDonGia.Text);
-            bus.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+            bus.SoLuong = Convert.ToInt32(txt_soluong.Text);
             bus.TrangThai = rdb_DaThanhToan.Checked ? 1 : 2;
             bus.BarCode = txtBarcode.Text;
-            bus.TenSanPham = txt_TenSanPham.Text;
+            bus.TenSanPham =cbMaSanPham.Text;
             bus.GhiChu = txtGhiChu.Text;
             _lstBusHoaDonChiTiets.Add(bus);
             Loaddata();
@@ -248,11 +327,19 @@ namespace _3_GUI_PresentationLayer
         }
 
         #endregion
-        private void txtSoLuong_TextChanged(object sender, EventArgs e)
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void txt_soluong_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                int sl = Convert.ToInt32(txtSoLuong.Text);
+                int sl = Convert.ToInt32(txt_soluong.Text);
                 float dg = float.Parse(txtDonGia.Text);
                 float tt = sl * dg;
                 lbTongTien.Text = Convert.ToString(tt);
@@ -260,12 +347,13 @@ namespace _3_GUI_PresentationLayer
             catch (Exception exception)
             {
                 MessageBox.Show("Số Lượng Quá Nhiều");
-                txtSoLuong.Text = "";
+                txt_soluong.Text = "";
             }
-            
         }
 
-       
+        private void btn_NhapLai_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
