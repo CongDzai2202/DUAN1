@@ -10,5 +10,6 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
     public interface IServiceQLBanHang
     {
         List<BUS_HoaDonChiTiet> GetLstBanHang();
+        //hello
     }
 }
