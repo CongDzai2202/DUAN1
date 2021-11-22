@@ -111,5 +111,10 @@ namespace _3_GUI_PresentationLayer
         {
             ActivateButton(sender, RGBColor.color6);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
