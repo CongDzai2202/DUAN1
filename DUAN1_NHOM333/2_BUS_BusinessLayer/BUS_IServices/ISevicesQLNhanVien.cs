@@ -1,19 +1,19 @@
-﻿using System;
+﻿using _1_DAL_DataAccesLayer.Models;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _1_DAL_DataAccesLayer.Models;
 
-namespace _1_DAL_DataAccesLayer.DAL_IServices
+
+namespace _2_BUS_BusinessLayer.BUS_IServices
 {
-    public interface IServiceNhanVien
+    public interface ISevicesQLNhanVien
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param ></param>
+        /// <param></param>
         /// <returns></returns>
         public string ThemNV(NhanVien nv);
         public string SuaNV(NhanVien nv);

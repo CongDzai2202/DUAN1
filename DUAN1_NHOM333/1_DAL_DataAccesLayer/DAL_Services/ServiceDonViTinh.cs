@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -14,12 +13,13 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
     {
         private DatabaseContext _dbContext;
         private List<DonViTinh> _lstKichThuoc;
+        private List<ChatLieu> _lstChatLieu;
 
         public ServiceDonViTinh()
         {
             _dbContext = new DatabaseContext();
             _lstKichThuoc = new List<DonViTinh>();
-            _lstKichThuoc=_dbContext.DonViTinhs.AsNoTracking().ToList();
+            GetDataFromDB();
         }
         public string ThemKT(DonViTinh kt)
         {
@@ -45,6 +45,17 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<DonViTinh> GetLstKichThuoc()
         {
             return _lstKichThuoc;
+        }
+
+        public void GetDataFromDB()
+        {
+             _lstKichThuoc= _dbContext.DonViTinhs.ToList();
+            _lstChatLieu = _dbContext.ChatLieus.ToList();
+        }
+
+        public List<ChatLieu> GetChatLieu()
+        {
+            return _lstChatLieu;
         }
     }
 }

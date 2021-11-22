@@ -1,14 +1,15 @@
-﻿using System;
+﻿using _1_DAL_DataAccesLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using _1_DAL_DataAccesLayer.Models;
 
-namespace _1_DAL_DataAccesLayer.DAL_IServices
+namespace _2_BUS_BusinessLayer.BUS_IServices
 {
-    public interface IServiceDonViTinh
+    public interface IServicesQLDonViTinh
     {
+
         public string ThemKT(DonViTinh kt);
         public string SuaKT(DonViTinh kt);
         public string XoaKT(DonViTinh kt);

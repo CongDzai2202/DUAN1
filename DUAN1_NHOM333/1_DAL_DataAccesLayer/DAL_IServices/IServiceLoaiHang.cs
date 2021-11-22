@@ -13,5 +13,6 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
         public string SuaLH(LoaiHang lh);
         public string XoaLH(LoaiHang lh);
         public List<LoaiHang> GetLstLoaiHang();
+        public void GetDataFromDB();
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace _1_DAL_DataAccesLayer.DAL_Services
 {
@@ -19,7 +18,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstXuatXu = new List<XuatXu>();
-            _lstXuatXu = _dbContext.XuatXus.AsNoTracking().ToList();
+            GetDataFromDB();
 
         }
         public string ThemXX(XuatXu xx)
@@ -46,6 +45,11 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<XuatXu> _GetLstXuatXu()
         {
             return _lstXuatXu;
+        }
+
+        public void GetDataFromDB()
+        {
+            _lstXuatXu = _dbContext.XuatXus.ToList();
         }
     }
 }
