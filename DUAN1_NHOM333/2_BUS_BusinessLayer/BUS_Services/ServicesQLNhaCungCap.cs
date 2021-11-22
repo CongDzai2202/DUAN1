@@ -26,7 +26,7 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         public string saveNCC()
         {
             _statusSavedata = true;
-            return _iServicesNhaCungCap.savencc();
+           return _iServicesNhaCungCap.saveNCC();
         }
 
         public string SuaNCC(NhaCungCap ncc)

@@ -60,4 +60,11 @@ C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\b
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\2_BUS_BusinessLayer.pdb
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\1_DAL_DataAccesLayer.pdb
 C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_BanHang.resources
-C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\3_GUI_PresentationLayer.csproj.CopyComplete
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Properties.Resources.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_NhapKho.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\bin\Debug\net5.0-windows\FontAwesome.Sharp.dll
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_QuanLiNCC.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_DonViTinh.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_LoaiHang.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_NhanVien.resources
+C:\Users\Microsoft Windows\Desktop\DUAN1\DUAN1_NHOM333\3_GUI_PresentationLayer\obj\Debug\net5.0-windows\_3_GUI_PresentationLayer.Frm_XuatXu.resources

@@ -35,8 +35,8 @@ namespace _3_GUI_PresentationLayer
             dgv_NhaCungCap.Columns[3].Name = "Địa Chỉ";
             dgv_NhaCungCap.Columns[3].Name = "Trạng Thái";
             dgv_NhaCungCap.Rows.Clear();
-            if (_iServicesQLNhaCungCap.getLstNhaCungCap().Count < 0) return;
-            foreach (var x in _iServicesQLNhaCungCap.getLstNhaCungCap())
+            if (_iServicesQLNhaCungCap.getLstNhaCungCaps().Count < 0) return;
+            foreach (var x in _iServicesQLNhaCungCap.getLstNhaCungCaps())
             {
                 dgv_NhaCungCap.Rows.Add(x.MaNhaCungCap, x.TenNhaCungCap, x.SoDienThoai, x.DiaChi, x.TrangThai == 1 ? "Hoạt Động" : "Không Hoạt Động");
             }
@@ -47,7 +47,7 @@ namespace _3_GUI_PresentationLayer
             btn_Them.Enabled = false;
             var row = dgv_NhaCungCap.Rows;
             int rowindex = e.RowIndex;
-            if (rowindex == _iServicesQLNhaCungCap.getLstNhaCungCap().Count || rowindex == -1) return;
+            if (rowindex == _iServicesQLNhaCungCap.getLstNhaCungCaps().Count || rowindex == -1) return;
             txt_MaNcc.Text = row[rowindex].Cells[0].Value.ToString();
             txt_TenNcc.Text = row[rowindex].Cells[1].Value.ToString();
             txt_SDT.Text = row[rowindex].Cells[2].Value.ToString();
@@ -60,7 +60,7 @@ namespace _3_GUI_PresentationLayer
             if (MessageBox.Show("Bạn có muốn thêm hay không?","Thông Báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
             {
                 NhaCungCap ncc = new NhaCungCap();
-                ncc.Id = _iServicesQLNhaCungCap.getLstNhaCungCap().Max(c => c.Id) + 1;
+                ncc.Id = _iServicesQLNhaCungCap.getLstNhaCungCaps().Max(c => c.Id) + 1;
                 ncc.MaNhaCungCap = "MNCC" + ncc.Id;
                 ncc.TenNhaCungCap = txt_TenNcc.Text;
                 ncc.SoDienThoai = txt_SDT.Text;
@@ -119,9 +119,9 @@ namespace _3_GUI_PresentationLayer
         private void btn_search_Click(object sender, EventArgs e)
         {
             dgv_NhaCungCap.Rows.Clear();
-            if (_iServicesQLNhaCungCap.getLstNhaCungCap().Count < 0) return;
+            if (_iServicesQLNhaCungCap.getLstNhaCungCaps().Count < 0) return;
             _iServicesQLNhaCungCap = new ServicesQLNhaCungCap();
-            foreach (var x in _iServicesQLNhaCungCap.getLstNhaCungCap().Where(c=>c.TenNhaCungCap.ToLower().StartsWith(txt_search.Text)))
+            foreach (var x in _iServicesQLNhaCungCap.getLstNhaCungCaps().Where(c=>c.TenNhaCungCap.ToLower().StartsWith(txt_search.Text)))
             {
                 dgv_NhaCungCap.Rows.Add(x.MaNhaCungCap, x.TenNhaCungCap, x.SoDienThoai, x.DiaChi, x.TrangThai == 1 ? "Hoạt Động" : "Không Hoạt Động");
             }

@@ -23,14 +23,14 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public string ThemHD(NhaCungCap ncc)
         {
             _dbContext.NhaCungCaps.Add(ncc);
-            _dbContext.SaveChanges();
+            
             return "Thêm Thành Công";
         }
 
         public string SuaHD(NhaCungCap ncc)
         {
             _dbContext.NhaCungCaps.Update(ncc);
-            _dbContext.SaveChanges();
+            
             return "Sửa Thành Công";
         }
 
@@ -40,7 +40,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             if (_dbContext.NhaCungCaps.ToList().Any(c => c.MaNhaCungCap == ncc.MaNhaCungCap))
             {
                 _dbContext.NhaCungCaps.Update(ncc);
-                _dbContext.SaveChanges();
+                
                 return "Xóa Thành Công";
             }
             else
@@ -52,6 +52,12 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<NhaCungCap> GetLstNhaCungCaps()
         {
             return _lstNhaCungCap;
+        }
+
+        public string saveNCC()
+        {
+            _dbContext.SaveChanges();
+            return "Lưu Thành Công";
         }
     }
 }

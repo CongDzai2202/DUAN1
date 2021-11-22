@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using _1_DAL_DataAccesLayer.DAL_IServices;
 using _1_DAL_DataAccesLayer.Context;
 using _1_DAL_DataAccesLayer.Models;
@@ -49,6 +50,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string LuuHD()
         {
+
             _dbContext.SaveChanges();
             return "Lưu Hóa Đơn Thành Công";
         }

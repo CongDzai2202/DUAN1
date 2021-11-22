@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "jqwzFfEsC32OLFjCmWMjXkQpiDXoNJXOXN8QOAtz2qfgMwIoVQAHJWr/3zmJx8KAhr42YIKZgYlin4Z1b7dVVQ==",
+  "dgSpecHash": "Njg1ERYOh2BDKSnD1NF26w7tbev/OHsUE92L/pN/9tScEnTk0nfwr/vMVrzGJfBnJvN/n8yez9Q8tY7jWkvEJw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Microsoft Windows\\Desktop\\DUAN1\\DUAN1_NHOM333\\3_GUI_PresentationLayer\\3_GUI_PresentationLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\aforge.video.directshow\\2.2.5\\aforge.video.directshow.2.2.5.nupkg.sha512",
+    "C:\\Users\\Microsoft Windows\\.nuget\\packages\\fontawesome.sharp\\5.15.3\\fontawesome.sharp.5.15.3.nupkg.sha512",
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Microsoft Windows\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

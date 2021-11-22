@@ -35,6 +35,18 @@
           "lib/AForge.Video.DirectShow.dll": {}
         }
       },
+      "FontAwesome.Sharp/5.15.3": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/FontAwesome.Sharp.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -1591,6 +1603,22 @@
         "aforge.video.directshow.nuspec",
         "lib/AForge.Video.DirectShow.dll",
         "lib/AForge.Video.DirectShow.xml"
+      ]
+    },
+    "FontAwesome.Sharp/5.15.3": {
+      "sha512": "b72giuP5i2aR2W+u1gdYfYnTRkMIvI78idSDgrgcSV0aSE/nwJcMoh3sItxugMqOcNeIHxveGxAxcrcTYmwlHA==",
+      "type": "package",
+      "path": "fontawesome.sharp/5.15.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.sharp.5.15.3.nupkg.sha512",
+        "fontawesome.sharp.nuspec",
+        "lib/net40/FontAwesome.Sharp.dll",
+        "lib/net45/FontAwesome.Sharp.dll",
+        "lib/net472/FontAwesome.Sharp.dll",
+        "lib/net48/FontAwesome.Sharp.dll",
+        "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
     "Microsoft.CSharp/4.5.0": {
@@ -5893,6 +5921,7 @@
     "net5.0-windows7.0": [
       "2_BUS_BusinessLayer >= 1.0.0",
       "AForge.Video.DirectShow >= 2.2.5",
+      "FontAwesome.Sharp >= 5.15.3",
       "ZXing.Net >= 0.16.6"
     ]
   },
@@ -5947,6 +5976,10 @@
           "AForge.Video.DirectShow": {
             "target": "Package",
             "version": "[2.2.5, )"
+          },
+          "FontAwesome.Sharp": {
+            "target": "Package",
+            "version": "[5.15.3, )"
           },
           "ZXing.Net": {
             "target": "Package",

@@ -43,7 +43,7 @@ namespace _3_GUI_PresentationLayer
                     lh.TrangThai = 0;
                 }
                 MessageBox.Show(_iserviceQLLoaiHang.ThemHDCT(lh));
-                _iserviceQLLoaiHang.GetDataFromDB();
+                
                 LoadGrid();
             }
         }
@@ -85,7 +85,6 @@ namespace _3_GUI_PresentationLayer
                 rbt_HoatDong.Checked = lh.TrangThai == 1 ? true : false;
                 rbt_KhongHĐ.Checked = lh.TrangThai == 0 ? true : false;
                 MessageBox.Show(_iserviceQLLoaiHang.SuaHDCT(lh));
-                _iserviceQLLoaiHang.GetDataFromDB();
                 LoadGrid();
             }
         }
@@ -97,7 +96,7 @@ namespace _3_GUI_PresentationLayer
             {
                 LoaiHang lh = _iserviceQLLoaiHang.GetLstLoaiSanPham().Where(c => c.Id == _id).FirstOrDefault();
                 MessageBox.Show(_iserviceQLLoaiHang.XoaHDCT(lh));
-                _iserviceQLLoaiHang.GetDataFromDB();
+               
                 LoadGrid();
             }
         }

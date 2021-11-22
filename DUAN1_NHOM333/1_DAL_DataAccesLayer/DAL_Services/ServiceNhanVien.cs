@@ -14,12 +14,16 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
     {
         private DatabaseContext _dbContext;
         private List<NhanVien> _lstNhanviens;
+        private List<ChucVu> _lstchucVus;
+
 
         public ServiceNhanVien()
         {
             _dbContext = new DatabaseContext();
             _lstNhanviens = new List<NhanVien>();
+            _lstchucVus = new List<ChucVu>();
             _lstNhanviens=_dbContext.NhanViens.AsNoTracking().ToList();
+            GetDataFromDB();
         }
         public string ThemNV(NhanVien nv)
         {
@@ -53,6 +57,22 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<NhanVien> GetLstNhanVien()
         {
             return _lstNhanviens;
+        }
+
+        public List<ChucVu> GetLstChucVu()
+        {
+            return _lstchucVus;
+        }
+
+        public void GetDataFromDB()
+        {
+            _lstNhanviens = _dbContext.NhanViens.ToList();
+            _lstchucVus = _dbContext.ChucVus.ToList();
+        }
+
+        public List<NhanVien> TimKiemNV(string nv)
+        {
+            return _lstNhanviens.Where(c => c.TenNhanVien.Contains(nv) || c.SoDienThoai.Contains(nv)).ToList();
         }
     }
 }

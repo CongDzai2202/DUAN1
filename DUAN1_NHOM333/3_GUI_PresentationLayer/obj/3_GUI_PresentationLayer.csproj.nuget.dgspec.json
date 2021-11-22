@@ -188,6 +188,10 @@
               "target": "Package",
               "version": "[2.2.5, )"
             },
+            "FontAwesome.Sharp": {
+              "target": "Package",
+              "version": "[5.15.3, )"
+            },
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.6, )"

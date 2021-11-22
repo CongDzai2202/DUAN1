@@ -458,8 +458,10 @@ namespace _3_GUI_PresentationLayer
             this.Controls.Add(this.lbTongTien);
             this.Controls.Add(this.label8);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Frm_BanHang";
             this.Text = "Bán Hàng ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_BanHang_FormClosing);
             this.Load += new System.EventHandler(this.Frm_BanHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

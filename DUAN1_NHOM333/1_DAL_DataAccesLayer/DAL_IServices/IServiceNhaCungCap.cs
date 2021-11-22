@@ -13,5 +13,6 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
         public string SuaHD(NhaCungCap ncc);
         public string XoaHD(NhaCungCap hd);
         public List<NhaCungCap> GetLstNhaCungCaps();
+        public string saveNCC();
     }
 }
