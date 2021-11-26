@@ -41,14 +41,9 @@ namespace _3_GUI_PresentationLayer
             this.btn_ThanhToan = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.grb_barcode = new System.Windows.Forms.GroupBox();
-            this.btn_NhapLai = new System.Windows.Forms.Button();
-            this.btn_sua = new System.Windows.Forms.Button();
-            this.rdb_ChuaThanhToan = new System.Windows.Forms.RadioButton();
-            this.rdb_DaThanhToan = new System.Windows.Forms.RadioButton();
-            this.txt_soluong = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.nbr_SoLuong = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,6 +62,7 @@ namespace _3_GUI_PresentationLayer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.grb_barcode.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbr_SoLuong)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -106,9 +102,9 @@ namespace _3_GUI_PresentationLayer
             // 
             this.pictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox.Location = new System.Drawing.Point(56, 74);
+            this.pictureBox.Location = new System.Drawing.Point(6, 65);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(1089, 285);
+            this.pictureBox.Size = new System.Drawing.Size(1139, 285);
             this.pictureBox.TabIndex = 14;
             this.pictureBox.TabStop = false;
             // 
@@ -173,7 +169,7 @@ namespace _3_GUI_PresentationLayer
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Location = new System.Drawing.Point(33, 197);
+            this.button1.Location = new System.Drawing.Point(13, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 40);
             this.button1.TabIndex = 26;
@@ -191,7 +187,7 @@ namespace _3_GUI_PresentationLayer
             this.grb_barcode.Controls.Add(this.txtBarcode);
             this.grb_barcode.Controls.Add(this.btnStart);
             this.grb_barcode.Controls.Add(this.label2);
-            this.grb_barcode.ForeColor = System.Drawing.Color.Navy;
+            this.grb_barcode.ForeColor = System.Drawing.Color.Black;
             this.grb_barcode.Location = new System.Drawing.Point(50, 342);
             this.grb_barcode.Name = "grb_barcode";
             this.grb_barcode.Size = new System.Drawing.Size(1164, 480);
@@ -200,97 +196,19 @@ namespace _3_GUI_PresentationLayer
             this.grb_barcode.Text = "BarCode";
             this.grb_barcode.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // btn_NhapLai
-            // 
-            this.btn_NhapLai.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NhapLai.BackgroundImage")));
-            this.btn_NhapLai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_NhapLai.Location = new System.Drawing.Point(383, 197);
-            this.btn_NhapLai.Name = "btn_NhapLai";
-            this.btn_NhapLai.Size = new System.Drawing.Size(129, 40);
-            this.btn_NhapLai.TabIndex = 26;
-            this.btn_NhapLai.Text = "     Nhập Lại";
-            this.btn_NhapLai.UseVisualStyleBackColor = true;
-            this.btn_NhapLai.Click += new System.EventHandler(this.btn_NhapLai_Click);
-            // 
-            // btn_sua
-            // 
-            this.btn_sua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_sua.BackgroundImage")));
-            this.btn_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_sua.Location = new System.Drawing.Point(208, 197);
-            this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(111, 40);
-            this.btn_sua.TabIndex = 26;
-            this.btn_sua.Text = "Sửa";
-            this.btn_sua.UseVisualStyleBackColor = true;
-            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
-            // 
-            // rdb_ChuaThanhToan
-            // 
-            this.rdb_ChuaThanhToan.AutoSize = true;
-            this.rdb_ChuaThanhToan.Location = new System.Drawing.Point(323, 128);
-            this.rdb_ChuaThanhToan.Name = "rdb_ChuaThanhToan";
-            this.rdb_ChuaThanhToan.Size = new System.Drawing.Size(173, 29);
-            this.rdb_ChuaThanhToan.TabIndex = 37;
-            this.rdb_ChuaThanhToan.TabStop = true;
-            this.rdb_ChuaThanhToan.Text = "Chưa Thanh Toán";
-            this.rdb_ChuaThanhToan.UseVisualStyleBackColor = true;
-            // 
-            // rdb_DaThanhToan
-            // 
-            this.rdb_DaThanhToan.AutoSize = true;
-            this.rdb_DaThanhToan.Location = new System.Drawing.Point(129, 130);
-            this.rdb_DaThanhToan.Name = "rdb_DaThanhToan";
-            this.rdb_DaThanhToan.Size = new System.Drawing.Size(154, 29);
-            this.rdb_DaThanhToan.TabIndex = 38;
-            this.rdb_DaThanhToan.TabStop = true;
-            this.rdb_DaThanhToan.Text = "Đã Thanh Toán";
-            this.rdb_DaThanhToan.UseVisualStyleBackColor = true;
-            // 
-            // txt_soluong
-            // 
-            this.txt_soluong.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_soluong.Location = new System.Drawing.Point(130, 74);
-            this.txt_soluong.Name = "txt_soluong";
-            this.txt_soluong.Size = new System.Drawing.Size(354, 37);
-            this.txt_soluong.TabIndex = 35;
-            this.txt_soluong.TextChanged += new System.EventHandler(this.txt_soluong_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 130);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 25);
-            this.label5.TabIndex = 28;
-            this.label5.Text = " Trạng Thái : ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 25);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Sô Lượng : ";
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btn_NhapLai);
+            this.groupBox3.Controls.Add(this.nbr_SoLuong);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.txt_soluong);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.btn_sua);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.lbDonGia);
             this.groupBox3.Controls.Add(this.lb_Tongtien);
-            this.groupBox3.Controls.Add(this.rdb_DaThanhToan);
             this.groupBox3.Controls.Add(this.lbSoLuong);
-            this.groupBox3.Controls.Add(this.rdb_ChuaThanhToan);
             this.groupBox3.Controls.Add(this.lbTenSanPham);
             this.groupBox3.Controls.Add(this.lbTrangThai);
             this.groupBox3.Controls.Add(this.lbMahoadon);
@@ -301,6 +219,27 @@ namespace _3_GUI_PresentationLayer
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hóa Đơn";
+            // 
+            // nbr_SoLuong
+            // 
+            this.nbr_SoLuong.Location = new System.Drawing.Point(123, 48);
+            this.nbr_SoLuong.Name = "nbr_SoLuong";
+            this.nbr_SoLuong.Size = new System.Drawing.Size(231, 31);
+            this.nbr_SoLuong.TabIndex = 28;
+            this.nbr_SoLuong.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 25);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Số Lượng : ";
             // 
             // label14
             // 
@@ -448,7 +387,7 @@ namespace _3_GUI_PresentationLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1750, 883);
             this.Controls.Add(this.btn_QuetMa);
             this.Controls.Add(this.groupBox4);
@@ -457,18 +396,19 @@ namespace _3_GUI_PresentationLayer
             this.Controls.Add(this.btn_ThanhToan);
             this.Controls.Add(this.lbTongTien);
             this.Controls.Add(this.label8);
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "Frm_BanHang";
             this.Text = "Bán Hàng ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_BanHang_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_BanHang_FormClosed);
             this.Load += new System.EventHandler(this.Frm_BanHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.grb_barcode.ResumeLayout(false);
             this.grb_barcode.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbr_SoLuong)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -489,13 +429,6 @@ namespace _3_GUI_PresentationLayer
         private System.Windows.Forms.Button btn_ThanhToan;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox grb_barcode;
-        private System.Windows.Forms.Button btn_NhapLai;
-        private System.Windows.Forms.Button btn_sua;
-        private System.Windows.Forms.RadioButton rdb_ChuaThanhToan;
-        private System.Windows.Forms.RadioButton rdb_DaThanhToan;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_soluong;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -512,5 +445,7 @@ namespace _3_GUI_PresentationLayer
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_QuetMa;
+        private System.Windows.Forms.NumericUpDown nbr_SoLuong;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -16,6 +16,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         private DatabaseContext _dbContext;
         private List<HoaDon> _lstHoaDon;
 
+
         public ServiceHoaDon()
         {
             _dbContext = new DatabaseContext();
@@ -30,6 +31,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string SuaHD(HoaDon hd)
         {
+            _dbContext.ChangeTracker.Clear();
             _dbContext.HoaDons.Update(hd);
             return "Sửa Thành Công";
         }
@@ -39,7 +41,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             hd.TrangThai = 1;
             if (_dbContext.HoaDons.ToList().Any(c => c.MaHoaDon == hd.MaHoaDon))
             {
-                _dbContext.HoaDons.Update(hd);
+                _dbContext.HoaDons.Remove(hd);
                 return "Xóa Thành Công";
             }
             else

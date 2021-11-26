@@ -58,6 +58,11 @@ namespace _2_BUS_BusinessLayer.BUS_Services
             return _busHoaDonChiTiets;
         }
 
-        
+        public string Xoa(int bus)
+        {
+            BUS_HoaDonChiTiet acc = _busHoaDonChiTiets.ToList().FirstOrDefault(c => c.Id == bus);
+            _busHoaDonChiTiets.Remove(acc);
+            return "Xóa thành Công";
+        }
     }
 }
