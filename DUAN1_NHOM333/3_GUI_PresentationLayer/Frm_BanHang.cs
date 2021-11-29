@@ -43,9 +43,13 @@ namespace _3_GUI_PresentationLayer
         public string TenSanPhamClick;
         public double DonGiaClick = 0;
         public int SoLuongClick = 0;
-        public double ThanhTienClick =0;
+        public double ThanhTienClick = 0;
         public string MaHoaDonClick;
         public string MaHoaDonChiTietClick;
+        public string TenSanPhamClick1;
+        public double DonGiaClick1 = 0;
+        public string MaThongTinClick;
+        public bool an = true;
         #endregion
 
         public Frm_BanHang()
@@ -60,10 +64,39 @@ namespace _3_GUI_PresentationLayer
             InitializeComponent();
             SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
             //Loaddata();
+            grb_SanPham.Visible = true;
             grb_barcode.Visible = false;
+            lbMahoadon.Visible = false;
+            lbTenSanPham.Visible = false;
+            lbDonGia.Visible = false;
+            lbSoLuong.Visible = false;
+            lb_Tongtien.Visible = false;
+            lbTrangThai.Visible = false;
+            LoaddataSanPham();
+            LoadView();
         }
 
+        void LoaddataSanPham()
+        {
+            dgidSanPham.ColumnCount = 3;
+            dgidSanPham.Columns[0].Name = "Tên Sản Phẩm";
+            dgidSanPham.Columns[1].Name = "Đơn Giá";
+            //dgidSanPham.Columns[2].Name = "Sô Lượng ";
+            //dgidSanPham.Columns[3].Name = "Thành Tiền";
+            dgidSanPham.Columns[2].Name = "Mã Thông Tin";
+            dgidSanPham.Columns[2].Visible = false;
+            dgidSanPham.Rows.Clear();
 
+            foreach (var x in _iServiceQlctSanPham.GetLstThongTinSanPhams().Where(c => c.Barcode.StartsWith(txtBarcode.Text)))
+            {
+                dgidSanPham.Rows.Add(x.TenSanPham, x.DonGia);
+            }
+            DataGridViewButtonColumn but1 = new DataGridViewButtonColumn();
+            but1.Text = "Thêm Sản Phẩm";
+            but1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            but1.UseColumnTextForButtonValue = true;
+            dgidSanPham.Columns.Add(but1);
+        }
 
         void Loaddata()
         {
@@ -110,7 +143,7 @@ namespace _3_GUI_PresentationLayer
             dataGridView1.Rows.Clear();
             foreach (var x in _lstBusHoaDonChiTiets)
             {
-                dataGridView1.Rows.Add(x.TenSanPham, x.DonGia, x.SoLuong, x.ThanhTien, x.MaHoaDon, x.MaHoaDonChiTiet,x.Id);
+                dataGridView1.Rows.Add(x.TenSanPham, x.DonGia, x.SoLuong, x.ThanhTien, x.MaHoaDon, x.MaHoaDonChiTiet, x.Id);
             }
             DataGridViewButtonColumn but1 = new DataGridViewButtonColumn();
             but1.Text = "Sửa";
@@ -124,6 +157,16 @@ namespace _3_GUI_PresentationLayer
             dataGridView1.Columns.Add(but1);
             dataGridView1.Columns.Add(but2);
 
+        }
+        void LoadView()
+        {
+            lv_HoaDon.Name = "Hóa Đơn Chưa Thanh Toán";
+            foreach(var x in _iServiceHoaDon.GetLstHoaDon().Where(c=>c.TrangThai == 1))
+            {
+                
+                lv_HoaDon.Items.Add(x.MaHoaDon);
+                //lv_HoaDon.BackgroundImage.Width();
+            }
         }
 
         private void TinhTien()
@@ -278,7 +321,7 @@ namespace _3_GUI_PresentationLayer
             hdct.GhiChu = "Không";
             if (dem == 1)
             {
-              
+
                 _iServiceQlHoaDon.ThemHD(hd);
                 _iServiceQlHoaDon.LuuHD();
             }
@@ -429,6 +472,12 @@ namespace _3_GUI_PresentationLayer
 
         void LoadTen()
         {
+            lbMahoadon.Visible = true;
+            lbTenSanPham.Visible = true;
+            lbDonGia.Visible = true;
+            lbSoLuong.Visible = true;
+            lb_Tongtien.Visible = true;
+            lbTrangThai.Visible = true;
 
             _lstBusHoaDonChiTiets = (from x in _lstBusHoaDonChiTiets
                                      group x by new
@@ -464,7 +513,7 @@ namespace _3_GUI_PresentationLayer
                 lbDonGia.Text = Convert.ToString(x.DonGia);
                 lbSoLuong.Text = Convert.ToString(x.SoLuong);
                 lbTrangThai.Text = x.TrangThai == 0 ? "Đã Thanh Toán" : "Chưa Thanh Toán";
-                lb_Tongtien.Text = TongTien.ToString();
+                lb_Tongtien.Text = lbTongTien.Text;
             }
         }
 
@@ -506,17 +555,17 @@ namespace _3_GUI_PresentationLayer
                 bus.BarCode = txtBarcode.Text;
                 bus.TenSanPham = TenSanPhamClick;
                 bus.GhiChu = "Không";
-                
+
                 _lstBusHoaDonChiTiets.Add(bus);
-                
+
 
                 #endregion
                 HoaDon hd = new HoaDon();
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
-              // hd = _iServiceQlHoaDon.getLstHoaDonBUS().Where(c => c.MaHoaDon == MaHoaDonClick).FirstOrDefault();
+                // hd = _iServiceQlHoaDon.getLstHoaDonBUS().Where(c => c.MaHoaDon == MaHoaDonClick).FirstOrDefault();
                 hd.MaHoaDon = MaHoaDonClick;
                 string mhd = MaHoaDonClick;
-                hd.Id = _iServiceHoaDon.GetLstHoaDon().Max(c=>c.Id); 
+                hd.Id = _iServiceHoaDon.GetLstHoaDon().Max(c => c.Id) + 1;
                 hd.MaNhanVien = "MNV1";
                 hd.NgayXuat = DateTime.Today;
                 hd.ThanhTien = TongTien;
@@ -530,12 +579,12 @@ namespace _3_GUI_PresentationLayer
                 hdct.SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
                 hdct.TrangThai = 1;
                 hdct.BarCode = txtBarcode.Text;
-                hdct.TenSanPham = TenSanPhamClick; 
+                hdct.TenSanPham = TenSanPhamClick;
                 hdct.GhiChu = "Không";
-                int bien= 0;
+                int bien = 0;
                 if (bien == 0)
                 {
-                  
+
                     _iServiceHoaDon.SuaHD(hd);
                     _iServiceHoaDon.LuuHD();
                     bien++;
@@ -562,7 +611,7 @@ namespace _3_GUI_PresentationLayer
                 //var a = _lstBusHoaDonChiTiets.Where(c => c.MaHoaDonChiTiet == MaHoaDonChiTietClick).Select(c => c.Id).FirstOrDefault();
                 var a = _lstBusHoaDonChiTiets.Where(c => c.Id == IDClick).FirstOrDefault();
                 _lstBusHoaDonChiTiets.Remove(a);
-               // _iServiceQlHienThi.Xoa(IDClick);
+                // _iServiceQlHienThi.Xoa(IDClick);
                 MessageBox.Show("Xóa Thành Công", "Thông Báo");
                 Loaddata();
                 LoadTen();
@@ -573,9 +622,47 @@ namespace _3_GUI_PresentationLayer
 
         private void btn_QuetMa_Click(object sender, EventArgs e)
         {
-            grb_barcode.Visible = true;
+
+            if (an == true)
+            {
+                grb_barcode.Visible = true;
+                grb_SanPham.Visible = false;
+                btn_QuetMa.Text = "Sản Phẩm";
+                an = false;
+            }
+            else if (an == false)
+            {
+                grb_SanPham.Visible = true;
+                grb_barcode.Visible = false;
+                btn_QuetMa.Text = "Quét Mã";
+                an = true;
+            }
         }
 
+
+        private void dgidSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowindex = e.RowIndex;
+            int columnindex = e.ColumnIndex;
+            if ((rowindex == _iServiceQlctSanPham.GetLstThongTinSanPhams().Count) || columnindex == -1 || rowindex == -1) return;
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 3)
+
+            {
+                TenSanPhamClick1 = dgidSanPham.Rows[rowindex].Cells[0].Value.ToString();
+                DonGiaClick1 = Convert.ToDouble(dgidSanPham.Rows[rowindex].Cells[1].Value.ToString());
+               // MaThongTinClick = dgidSanPham.Rows[rowindex].Cells[2].Value.ToString();
+                flag = TenSanPhamClick1;
+                DonGia = DonGiaClick1;
+                ThanhTien = DonGia * Convert.ToInt32(nbr_SoLuong.Text);
+                MessageBox.Show(ThanhTien.ToString());
+                LuuHoaDon();
+                TinhTien();
+                Loaddata();
+                lbTongTien.Text = TongTien.ToString();
+            }
+        }
+        #region Thừa
         private void Frm_BanHang_FormClosed(object sender, FormClosedEventArgs e)
         {
             // if (ThanhToan == false)
@@ -588,6 +675,17 @@ namespace _3_GUI_PresentationLayer
             // }
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+
+        }
+
+        private void groupBox1_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
+
