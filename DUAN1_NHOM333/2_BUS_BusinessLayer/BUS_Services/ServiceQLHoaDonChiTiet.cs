@@ -33,14 +33,19 @@ namespace _2_BUS_BusinessLayer.BUS_Services
             return _iServiceHoaDonChiTiet.SuaHDCT(hdct);
         }
 
-        public string XoaHDCT(HoaDonChiTiet hdct)
+        public string XoaHDCT(string mhdct)
         {
-            return _iServiceHoaDonChiTiet.XoaHDCT(hdct);
+            return _iServiceHoaDonChiTiet.XoaHDCT(mhdct);
         }
 
         public string Luu()
         {
             return _iServiceHoaDonChiTiet.LuuHDCT();
+        }
+
+        public void GetLstFromDB()
+        {
+            _iServiceHoaDonChiTiet.GetLstFromDB();
         }
     }
 }

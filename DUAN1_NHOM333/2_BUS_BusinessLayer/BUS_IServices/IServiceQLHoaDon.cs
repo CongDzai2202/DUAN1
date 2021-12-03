@@ -14,5 +14,6 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
         public string SuaHD(HoaDon hd);
         public string XoaHD(HoaDon hd);
         public string LuuHD();
+        public void GetLstFromDB();
     }
 }

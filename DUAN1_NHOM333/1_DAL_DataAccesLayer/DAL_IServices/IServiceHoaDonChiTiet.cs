@@ -13,6 +13,7 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
         public string SuaHDCT(HoaDonChiTiet hdct);
         public string XoaHDCT(String mhdct);
         public string LuuHDCT();
+        public void GetLstFromDB();
         public List<HoaDonChiTiet> GetHoaDonChiTiets();
     }
 }

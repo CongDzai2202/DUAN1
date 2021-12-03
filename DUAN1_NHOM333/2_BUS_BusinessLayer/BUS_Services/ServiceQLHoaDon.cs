@@ -43,5 +43,10 @@ namespace _2_BUS_BusinessLayer.BUS_Services
         {
             return _iServiceHoaDon.LuuHD();
         }
+
+        public void GetLstFromDB()
+        {
+            _iServiceHoaDon.GetLstFromDB();
+        }
     }
 }

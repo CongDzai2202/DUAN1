@@ -21,9 +21,12 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             _dbContext = new DatabaseContext();
             _lstNhanviens = new List<NhanVien>();
+
             _lstchucVus = new List<ChucVu>();
             _lstNhanviens=_dbContext.NhanViens.AsNoTracking().ToList();
             GetDataFromDB();
+
+
         }
         public string ThemNV(NhanVien nv)
         {
@@ -31,7 +34,11 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param ></param>
+        /// <returns></returns>
         public string SuaNV(NhanVien nv)
         {
             _dbContext.NhanViens.Update(nv);
@@ -41,7 +48,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string XoaNV(NhanVien nv)
         {
-            nv.TrangThai = 1;
+            nv.TrangThai = 0;
             if (_dbContext.NhanViens.ToList().Any(c => c.MaNhanVien == nv.MaNhanVien))
             {
                 _dbContext.NhanViens.Update(nv);
@@ -71,7 +78,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         }
 
         public List<NhanVien> TimKiemNV(string nv)
-        {
+        { 
             return _lstNhanviens.Where(c => c.TenNhanVien.Contains(nv) || c.SoDienThoai.Contains(nv)).ToList();
         }
     }

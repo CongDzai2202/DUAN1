@@ -47,7 +47,6 @@ namespace _3_GUI_PresentationLayer
             this.label3 = new System.Windows.Forms.Label();
             this.Hoa = new System.Windows.Forms.GroupBox();
             this.lv_HoaDon = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.btn_QuetMa = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -220,13 +219,14 @@ namespace _3_GUI_PresentationLayer
             this.btn_SanPham.ForeColor = System.Drawing.Color.White;
             this.btn_SanPham.Image = global::_3_GUI_PresentationLayer.Properties.Resources.san_pham_dong_y1;
             this.btn_SanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SanPham.Location = new System.Drawing.Point(663, 330);
+            this.btn_SanPham.Location = new System.Drawing.Point(473, 327);
             this.btn_SanPham.Name = "btn_SanPham";
             this.btn_SanPham.Size = new System.Drawing.Size(144, 51);
             this.btn_SanPham.TabIndex = 42;
             this.btn_SanPham.Text = "Sản Phẩm ";
             this.btn_SanPham.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SanPham.UseVisualStyleBackColor = false;
+            this.btn_SanPham.Click += new System.EventHandler(this.btn_SanPham_Click);
             // 
             // panel1
             // 
@@ -264,22 +264,14 @@ namespace _3_GUI_PresentationLayer
             // 
             // lv_HoaDon
             // 
-            this.lv_HoaDon.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lv_HoaDon.FullRowSelect = true;
-            this.lv_HoaDon.GridLines = true;
+            this.lv_HoaDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lv_HoaDon.HideSelection = false;
-            this.lv_HoaDon.Location = new System.Drawing.Point(6, 54);
+            this.lv_HoaDon.Location = new System.Drawing.Point(17, 54);
             this.lv_HoaDon.Name = "lv_HoaDon";
-            this.lv_HoaDon.Size = new System.Drawing.Size(155, 707);
+            this.lv_HoaDon.Size = new System.Drawing.Size(105, 707);
             this.lv_HoaDon.TabIndex = 0;
             this.lv_HoaDon.UseCompatibleStateImageBehavior = false;
-            this.lv_HoaDon.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Mã Hóa Đơn";
-            this.columnHeader1.Width = 150;
+            this.lv_HoaDon.View = System.Windows.Forms.View.Tile;
             // 
             // btn_QuetMa
             // 
@@ -717,6 +709,5 @@ namespace _3_GUI_PresentationLayer
         private System.Windows.Forms.ComboBox cboCamera;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

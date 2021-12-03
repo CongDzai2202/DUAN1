@@ -30,6 +30,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string SuaHDCT(HoaDonChiTiet hdct)
         {
+            _dbContext.ChangeTracker.Clear();
             _dbContext.HoaDonChiTiets.Update(hdct);
             return "Sửa Thành Công";
         }
@@ -44,6 +45,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string LuuHDCT()
         {
+            _dbContext.ChangeTracker.Clear();
             _dbContext.SaveChanges();
             return "Lưu Thành Công";
         }
@@ -51,6 +53,11 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<HoaDonChiTiet> GetHoaDonChiTiets()
         {
             return _lstHoaDonChiTiets;
+        }
+
+        public void GetLstFromDB()
+        {
+            _lstHoaDonChiTiets = _dbContext.HoaDonChiTiets.AsNoTracking().ToList();
         }
     }
 }

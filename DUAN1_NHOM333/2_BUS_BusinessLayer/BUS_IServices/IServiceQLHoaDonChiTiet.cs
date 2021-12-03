@@ -13,8 +13,9 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
         List<HoaDonChiTiet> getLstHoaDonChiTietBUS();
         public string ThemHDCT(HoaDonChiTiet hdct);
         public string SuaHDCT(HoaDonChiTiet hdct);
-        public string XoaHDCT(HoaDonChiTiet hdct);
+        public string XoaHDCT(string mhdct);
         public string Luu();
+        public void GetLstFromDB();
 
     }
 }
