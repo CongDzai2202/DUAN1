@@ -31,7 +31,6 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string SuaHD(HoaDon hd)
         {
-            _dbContext.ChangeTracker.Clear();
             _dbContext.HoaDons.Update(hd);
             return "Sửa Thành Công";
         }
@@ -60,6 +59,11 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public List<HoaDon> GetLstHoaDon()
         {
             return _lstHoaDon;
+        }
+
+        public void GetLstFromDB()
+        {
+            _lstHoaDon = _dbContext.HoaDons.AsNoTracking().ToList();
         }
     }
 }

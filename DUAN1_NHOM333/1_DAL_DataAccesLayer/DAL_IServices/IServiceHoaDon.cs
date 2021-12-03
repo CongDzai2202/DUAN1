@@ -14,5 +14,6 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
         public string XoaHD(HoaDon hd);
         public string LuuHD();
         public List<HoaDon> GetLstHoaDon();
+        public void GetLstFromDB();
     } 
 }

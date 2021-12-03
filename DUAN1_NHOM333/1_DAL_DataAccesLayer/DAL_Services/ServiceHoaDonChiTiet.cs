@@ -34,18 +34,12 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
             return "Sửa Thành Công";
         }
 
-        public string XoaHDCT(HoaDonChiTiet hdct)
+        public string XoaHDCT(string mhdct)
         {
-            hdct.TrangThai = 1;
-            if (_dbContext.HoaDonChiTiets.ToList().Any(c => c.MaHoaDonChiTiet== hdct.MaHoaDonChiTiet))
-            {
-                _dbContext.HoaDonChiTiets.Update(hdct);
-                return "Xóa Thành Công";
-            }
-            else
-            {
-                return "Xóa Không Thành Công";
-            }
+            var a = _dbContext.HoaDonChiTiets.FirstOrDefault(c => c.MaHoaDonChiTiet == mhdct);
+            _dbContext.HoaDonChiTiets.Remove(a);
+            _dbContext.SaveChanges();
+            return "Xóa Thành Công";
         }
 
         public string LuuHDCT()

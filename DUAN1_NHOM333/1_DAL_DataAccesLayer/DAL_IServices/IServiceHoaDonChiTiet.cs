@@ -11,7 +11,7 @@ namespace _1_DAL_DataAccesLayer.DAL_IServices
     {
         public string ThemHDCT(HoaDonChiTiet hdct);
         public string SuaHDCT(HoaDonChiTiet hdct);
-        public string XoaHDCT(HoaDonChiTiet hdct);
+        public string XoaHDCT(String mhdct);
         public string LuuHDCT();
         public List<HoaDonChiTiet> GetHoaDonChiTiets();
     }

@@ -13,6 +13,7 @@ using _1_DAL_DataAccesLayer.Models;
 using _2_BUS_BusinessLayer.BUS_IServices;
 using _2_BUS_BusinessLayer.BUS_Models;
 using _2_BUS_BusinessLayer.BUS_Services;
+using _2_BUS_BusinessLayer.BUS_Utilities;
 using AForge.Video.DirectShow;
 using ZXing;
 
@@ -28,6 +29,7 @@ namespace _3_GUI_PresentationLayer
         private IServiceQLHienThi _iServiceQlHienThi;
         private IServiceHoaDon _iServiceHoaDon;
         private IServiceHoaDonChiTiet _iServiceHoaDonChiTiet;
+        private CheckHoaDon checkHoaDon;
         #region TenBien
         public string flag;
         public string flag1;
@@ -50,10 +52,12 @@ namespace _3_GUI_PresentationLayer
         public double DonGiaClick1 = 0;
         public string MaThongTinClick;
         public bool an = true;
+
         #endregion
 
         public Frm_BanHang()
         {
+            checkHoaDon = new CheckHoaDon();
             _lstBusHoaDonChiTiets = new List<BUS_HoaDonChiTiet>();
             _iServiceQlHoaDon = new ServiceQLHoaDon();
             _iServiceQlHoaDonChiTiet = new ServiceQLHoaDonChiTiet();
@@ -73,9 +77,17 @@ namespace _3_GUI_PresentationLayer
             lb_Tongtien.Visible = false;
             lbTrangThai.Visible = false;
             LoaddataSanPham();
-            LoadView();
+            //LoadView();
         }
-
+        bool Check()
+        {
+            if (checkHoaDon.checkNull(nbr_SoLuong.Text))
+            {
+                MessageBox.Show(" Số Lượng Không Được Để Trống", "Thông Báo");
+                return false;
+            }
+            return true;
+        }
         void LoaddataSanPham()
         {
             dgidSanPham.ColumnCount = 3;
@@ -160,8 +172,9 @@ namespace _3_GUI_PresentationLayer
         }
         void LoadView()
         {
-            lv_HoaDon.Name = "Hóa Đơn Chưa Thanh Toán";
-            foreach(var x in _iServiceHoaDon.GetLstHoaDon().Where(c=>c.TrangThai == 1))
+            _iServiceHoaDon.GetLstFromDB();
+            lv_HoaDon.Clear();
+            foreach(var x in _iServiceHoaDon.GetLstHoaDon().Where(c=>c.TrangThai == 1 && c.NgayXuat == DateTime.Today))
             {
                 
                 lv_HoaDon.Items.Add(x.MaHoaDon);
@@ -209,8 +222,7 @@ namespace _3_GUI_PresentationLayer
             TinhTien();
             Loaddata();
             lbTongTien.Text = TongTien.ToString();
-
-
+            LoadView();
         }
 
 
@@ -231,128 +243,136 @@ namespace _3_GUI_PresentationLayer
         }
         public void LuuHoaDon()
         {
-            HoaDon hd = new HoaDon();
-            HoaDonChiTiet hdct = new HoaDonChiTiet();
-            hd.Id = _iServiceQlHoaDon.getLstHoaDonBUS().Max(c => c.Id) + 1;
-            hd.MaHoaDon = "HD" + hd.Id;
-            string MaHoaDon = hd.MaHoaDon;
-            flag1 = hd.MaHoaDon;
-            hd.MaNhanVien = "MNV1";
-            hd.NgayXuat = DateTime.Today;
-            hd.ThanhTien = ThanhTien;
-            hd.TrangThai = 1;
-            hdct.MaHoaDonChiTiet = "HDCT" + hdct.Id;
+            //if (Check() == true)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+                HoaDon hd = new HoaDon();
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                hd.Id = _iServiceQlHoaDon.getLstHoaDonBUS().Max(c => c.Id) + 1;
+                hd.MaHoaDon = "HD" + hd.Id;
+                string MaHoaDon = hd.MaHoaDon;
+                flag1 = hd.MaHoaDon;
+                hd.MaNhanVien = "MNV1";
+                hd.NgayXuat = DateTime.Today;
+                hd.ThanhTien = ThanhTien;
+                hd.TrangThai = 1;
+                hdct.MaHoaDonChiTiet = "HDCT" + hdct.Id;
 
-            #region dem++
+                #region dem++
 
-            if (dem == 0)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 1);
-                dem++;
-            }
-            else if (dem == 1)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 2);
-                dem++;
-            }
-            else if (dem == 2)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 3);
-                dem++;
-            }
-            else if (dem == 3)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 4);
-                dem++;
-            }
-            else if (dem == 4)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 5);
-                dem++;
-            }
-            else if (dem == 5)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 6);
-                dem++;
-            }
-            else if (dem == 6)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 7);
-                dem++;
-            }
-            else if (dem == 7)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 8);
-                dem++;
-            }
-            else if (dem == 8)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 9);
-                dem++;
-            }
-            else if (dem == 9)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 10);
-                dem++;
-            }
-            else if (dem == 10)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 11);
-                dem++;
-            }
-            else if (dem == 11)
-            {
-                hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 12);
-                dem++;
-            }
+                if (dem == 0)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 1);
+                    dem++;
+                }
+                else if (dem == 1)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 2);
+                    dem++;
+                }
+                else if (dem == 2)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 3);
+                    dem++;
+                }
+                else if (dem == 3)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 4);
+                    dem++;
+                }
+                else if (dem == 4)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 5);
+                    dem++;
+                }
+                else if (dem == 5)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 6);
+                    dem++;
+                }
+                else if (dem == 6)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 7);
+                    dem++;
+                }
+                else if (dem == 7)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 8);
+                    dem++;
+                }
+                else if (dem == 8)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 9);
+                    dem++;
+                }
+                else if (dem == 9)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 10);
+                    dem++;
+                }
+                else if (dem == 10)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 11);
+                    dem++;
+                }
+                else if (dem == 11)
+                {
+                    hdct.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id + 12);
+                    dem++;
+                }
 
-            #endregion
+                #endregion
 
-            hdct.MaHoaDonChiTiet = "HDCT" + hdct.Id;
-            hdct.MaThongTin = _iServiceQlctSanPham.GetLstThongTinSanPhams()
-                .Where(c => c.TenSanPham == flag).Select(c => c.MaThongTin).FirstOrDefault();
+                hdct.MaHoaDonChiTiet = "HDCT" + hdct.Id;
+                hdct.MaThongTin = _iServiceQlctSanPham.GetLstThongTinSanPhams()
+                    .Where(c => c.TenSanPham == flag).Select(c => c.MaThongTin).FirstOrDefault();
 
-            hdct.MaHoaDon = MaHoaDon;
-            hdct.DonGia = DonGia;
-            hdct.SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
-            hdct.TrangThai = 1;
-            hdct.BarCode = txtBarcode.Text;
-            hdct.TenSanPham = flag;
-            hdct.GhiChu = "Không";
-            if (dem == 1)
-            {
+                hdct.MaHoaDon = MaHoaDon;
+                hdct.DonGia = DonGia;
+                hdct.SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
+                hdct.TrangThai = 1;
+                hdct.BarCode = txtBarcode.Text;
+                hdct.TenSanPham = flag;
+                hdct.GhiChu = "Không";
+                if (dem == 1)
+                {
 
-                _iServiceQlHoaDon.ThemHD(hd);
-                _iServiceQlHoaDon.LuuHD();
-            }
+                    _iServiceQlHoaDon.ThemHD(hd);
+                    _iServiceQlHoaDon.LuuHD();
+                }
 
-            _iServiceQlHoaDonChiTiet.ThemHDCT(hdct);
-            _iServiceQlHoaDonChiTiet.Luu();
+                _iServiceQlHoaDonChiTiet.ThemHDCT(hdct);
+                _iServiceQlHoaDonChiTiet.Luu();
 
-            #region hienthi
+                #region hienthi
 
-            BUS_HoaDonChiTiet bus = new BUS_HoaDonChiTiet();
-            bus.Id = hdct.Id;
-            bus.MaHoaDon = "HD" + hd.Id;
-            bus.MaNhanVien = "MNV1";
-            bus.NgayXuat = DateTime.Today;
-            bus.ThanhTien = ThanhTien;
-            bus.TrangThai = 1;
-            //bus.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id) + 1;
-            bus.MaHoaDonChiTiet = hdct.MaHoaDonChiTiet;
-            bus.MaHoaDon = hd.MaHoaDon;
-            bus.DonGia = DonGia;
-            bus.SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
-            bus.TrangThai = 1;
-            bus.BarCode = txtBarcode.Text;
-            bus.TenSanPham = flag;
-            bus.GhiChu = "Không";
-            _lstBusHoaDonChiTiets.Add(bus);
+                BUS_HoaDonChiTiet bus = new BUS_HoaDonChiTiet();
+                bus.Id = hdct.Id;
+                bus.MaHoaDon = "HD" + hd.Id;
+                bus.MaNhanVien = "MNV1";
+                bus.NgayXuat = DateTime.Today;
+                bus.ThanhTien = ThanhTien;
+                bus.TrangThai = 1;
+                //bus.Id = _iServiceQlHoaDonChiTiet.getLstHoaDonChiTietBUS().Max(c => c.Id) + 1;
+                bus.MaHoaDonChiTiet = hdct.MaHoaDonChiTiet;
+                bus.MaHoaDon = hd.MaHoaDon;
+                bus.DonGia = DonGia;
+                bus.SoLuong = Convert.ToInt32(nbr_SoLuong.Text);
+                bus.TrangThai = 1;
+                bus.BarCode = txtBarcode.Text;
+                bus.TenSanPham = flag;
+                bus.GhiChu = "Không";
+                _lstBusHoaDonChiTiets.Add(bus);
 
 
+                 LoadView();
+                #endregion
 
-            #endregion
 
+           // }
         }
         #region Camera
         private FilterInfoCollection filterInfoCollection;
@@ -445,16 +465,17 @@ namespace _3_GUI_PresentationLayer
         // Thêm
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thêm hay không?", "Thông Báo", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                // LuuHoaDon();
-                TinhTien();
-                lbTongTien.Text = TongTien.ToString();
-            }
+            //if (MessageBox.Show("Bạn có muốn thêm hay không?", "Thông Báo", MessageBoxButtons.YesNo,
+            //    MessageBoxIcon.Question) == DialogResult.Yes)
+            //{
+            //    LuuHoaDon();
+            //    TinhTien();
+            //    lbTongTien.Text = TongTien.ToString();
 
+            //}
+            LoadView();
 
-            LoadTen();
+            /// LoadTen();
             #endregion
         }
 
@@ -609,14 +630,19 @@ namespace _3_GUI_PresentationLayer
                 MaHoaDonChiTietClick = dataGridView1.Rows[rowindex].Cells[5].Value.ToString();
                 IDClick = Convert.ToInt32(dataGridView1.Rows[rowindex].Cells[6].Value.ToString());
                 //var a = _lstBusHoaDonChiTiets.Where(c => c.MaHoaDonChiTiet == MaHoaDonChiTietClick).Select(c => c.Id).FirstOrDefault();
-                var a = _lstBusHoaDonChiTiets.Where(c => c.Id == IDClick).FirstOrDefault();
-                _lstBusHoaDonChiTiets.Remove(a);
-                // _iServiceQlHienThi.Xoa(IDClick);
-                MessageBox.Show("Xóa Thành Công", "Thông Báo");
-                Loaddata();
-                LoadTen();
-                TinhTien();
-                lbTongTien.Text = TongTien.ToString();
+                if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var a = _lstBusHoaDonChiTiets.Where(c => c.Id == IDClick).FirstOrDefault();
+                    _lstBusHoaDonChiTiets.Remove(a);
+                    _iServiceHoaDonChiTiet.XoaHDCT(MaHoaDonChiTietClick);
+                    MessageBox.Show("Xóa Thành Công", "Thông Báo");
+                    Loaddata();
+                    LoadTen();
+                    TinhTien();
+                    LoadView();
+                    lbTongTien.Text = TongTien.ToString();
+                }
             }
         }
 
@@ -655,7 +681,6 @@ namespace _3_GUI_PresentationLayer
                 flag = TenSanPhamClick1;
                 DonGia = DonGiaClick1;
                 ThanhTien = DonGia * Convert.ToInt32(nbr_SoLuong.Text);
-                MessageBox.Show(ThanhTien.ToString());
                 LuuHoaDon();
                 TinhTien();
                 Loaddata();
@@ -686,6 +711,11 @@ namespace _3_GUI_PresentationLayer
 
         }
         #endregion
+
+        private void txtBarcode_KeyUp_1(object sender, KeyEventArgs e)
+        {
+            
+        }
     }
 }
 
