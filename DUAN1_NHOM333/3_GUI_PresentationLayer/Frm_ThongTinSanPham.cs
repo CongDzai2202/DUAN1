@@ -309,5 +309,12 @@ namespace _3_GUI_PresentationLayer
 
         }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Frm_GiaoDien gd = new Frm_GiaoDien();
+            this.Hide();
+            gd.Show();
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         {
             //hdct.Id = GetHoaDonChiTiets().Max(c => c.Id) + 1;
             _dbContext.HoaDonChiTiets.Add(hdct);
+            _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
@@ -45,7 +46,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string LuuHDCT()
         {
-            _dbContext.ChangeTracker.Clear();
+            //_dbContext.ChangeTracker.Clear();
             _dbContext.SaveChanges();
             return "Lưu Thành Công";
         }

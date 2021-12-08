@@ -63,6 +63,9 @@ namespace _3_GUI_PresentationLayer
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgid_Data)).BeginInit();
@@ -70,6 +73,7 @@ namespace _3_GUI_PresentationLayer
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -265,32 +269,39 @@ namespace _3_GUI_PresentationLayer
             // dgid_Data
             // 
             this.dgid_Data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgid_Data.Location = new System.Drawing.Point(17, 62);
+            this.dgid_Data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgid_Data.Location = new System.Drawing.Point(3, 27);
             this.dgid_Data.Name = "dgid_Data";
             this.dgid_Data.RowHeadersWidth = 62;
             this.dgid_Data.RowTemplate.Height = 33;
-            this.dgid_Data.Size = new System.Drawing.Size(1424, 280);
+            this.dgid_Data.Size = new System.Drawing.Size(1839, 307);
             this.dgid_Data.TabIndex = 16;
             this.dgid_Data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgid_Data_CellClick);
             // 
             // btn_Them
             // 
+            this.btn_Them.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_Them.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Them.ForeColor = System.Drawing.Color.White;
             this.btn_Them.Location = new System.Drawing.Point(506, 349);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(148, 47);
             this.btn_Them.TabIndex = 17;
             this.btn_Them.Text = "Thêm";
-            this.btn_Them.UseVisualStyleBackColor = true;
+            this.btn_Them.UseVisualStyleBackColor = false;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // btnSua
             // 
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnSua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(506, 416);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(148, 47);
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label9
@@ -321,7 +332,7 @@ namespace _3_GUI_PresentationLayer
             this.groupBox1.Controls.Add(this.txtBarcode);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(12, 107);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(766, 585);
             this.groupBox1.TabIndex = 18;
@@ -331,9 +342,9 @@ namespace _3_GUI_PresentationLayer
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgid_Data);
-            this.groupBox2.Location = new System.Drawing.Point(13, 604);
+            this.groupBox2.Location = new System.Drawing.Point(12, 701);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1462, 377);
+            this.groupBox2.Size = new System.Drawing.Size(1845, 337);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             // 
@@ -357,7 +368,7 @@ namespace _3_GUI_PresentationLayer
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(800, 13);
+            this.groupBox3.Location = new System.Drawing.Point(804, 107);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(659, 585);
             this.groupBox3.TabIndex = 20;
@@ -367,27 +378,64 @@ namespace _3_GUI_PresentationLayer
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Location = new System.Drawing.Point(1482, 13);
+            this.groupBox4.Location = new System.Drawing.Point(1482, 120);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(375, 585);
+            this.groupBox4.Size = new System.Drawing.Size(375, 572);
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Hình Ảnh";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(17, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(158, 52);
             this.button1.TabIndex = 0;
             this.button1.Text = "Ảnh ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1869, 101);
+            this.panel1.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(648, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(289, 38);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Thông Tin Sản Phẩm";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button2.Image = global::_3_GUI_PresentationLayer.Properties.Resources.out1;
+            this.button2.Location = new System.Drawing.Point(1759, 24);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 44);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Frm_ThongTinSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1869, 1050);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -406,6 +454,8 @@ namespace _3_GUI_PresentationLayer
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -445,5 +495,8 @@ namespace _3_GUI_PresentationLayer
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
     }
 }

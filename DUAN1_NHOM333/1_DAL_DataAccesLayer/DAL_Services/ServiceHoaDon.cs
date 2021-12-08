@@ -26,6 +26,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
         public string ThemHD(HoaDon hd)
         {
             _dbContext.HoaDons.Add(hd);
+            _dbContext.SaveChanges();
             return "Thêm Thành Công";
         }
 
@@ -52,7 +53,7 @@ namespace _1_DAL_DataAccesLayer.DAL_Services
 
         public string LuuHD()
         {
-            _dbContext.ChangeTracker.Clear();
+            //_dbContext.ChangeTracker.Clear();
             _dbContext.SaveChanges();
             return "Lưu Hóa Đơn Thành Công";
         }
