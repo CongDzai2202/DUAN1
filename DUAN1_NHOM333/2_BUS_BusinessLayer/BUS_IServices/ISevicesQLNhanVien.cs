@@ -11,7 +11,7 @@ namespace _2_BUS_BusinessLayer.BUS_IServices
     public interface ISevicesQLNhanVien
     {
         /// <summary>
-        /// 
+        /// test commit
         /// </summary>
         /// <param></param>
         /// <returns></returns>
