@@ -1,6 +1,7 @@
 ﻿using _1_DAL_DataAccesLayer.Models;
 using _2_BUS_BusinessLayer.BUS_IServices;
 using _2_BUS_BusinessLayer.BUS_Services;
+using _2_BUS_BusinessLayer.BUS_Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +18,13 @@ namespace _3_GUI_PresentationLayer
     {
         private ISevicesQLNhanVien _iQLNV;
         int _id;
+        private MaHoaMK maHoaMK;
         public Frm_NhanVien()
         {
             _iQLNV = new ServiceQLNhanVien();
+            maHoaMK = new MaHoaMK();
             InitializeComponent();
+            _iQLNV.GetDataFromDB();
             loadCbx();
             LoadGrid();
         }
@@ -76,31 +80,51 @@ namespace _3_GUI_PresentationLayer
         }
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dr == DialogResult.Yes)
-            {
-                NhanVien nv = new NhanVien();
-                nv.Id = _iQLNV.GetLstNhanVien().Max(c => c.Id) + 1;
-                nv.MaNhanVien = "NV" + nv.Id;
-                nv.TenNhanVien = txb_TenNhanVien.Text;
-                nv.SoCmnd = txb_CMND.Text;
-                nv.NamSinh = Convert.ToInt32(cbx_NamSinh.Text);
-                nv.SoDienThoai = txb_SDTNV.Text;
-                nv.MatKhau = txb_MatKhau.Text;
-                if (rbt_HoatDong.Checked=true)
+
+                DialogResult dr = MessageBox.Show("Bạn có muốn thêm không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
                 {
-                    nv.TrangThai = 1;
+                    if (txb_TenNhanVien.Text == "" || txb_MatKhau.Text == "" || txb_CMND.Text == "" || txb_SDTNV.Text == "" || txb_DiaChi.Text == "")
+                    {
+                        DialogResult dm = MessageBox.Show("Bạn phải điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (_iQLNV.GetLstNhanVien().Any(c => c.SoCmnd == txb_CMND.Text))
+
+                    {
+                        DialogResult dm = MessageBox.Show("Số chứng minh nhân dân đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (_iQLNV.GetLstNhanVien().Any(c => c.SoDienThoai == txb_SDTNV.Text))
+
+                    {
+                        DialogResult dm = MessageBox.Show("Số điện thoại đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        NhanVien nv = new NhanVien();
+                        nv.Id = _iQLNV.GetLstNhanVien().Max(c => c.Id) + 1;
+                        nv.MaNhanVien = "NV" + nv.Id;
+                        nv.TenNhanVien = txb_TenNhanVien.Text;
+                        nv.SoCmnd = txb_CMND.Text;
+                        nv.NamSinh = Convert.ToInt32(cbx_NamSinh.Text);
+                        nv.SoDienThoai = txb_SDTNV.Text;
+                        nv.MatKhau = maHoaMK.MaHoaMk(txb_MatKhau.Text);
+                        if (rbt_HoatDong.Checked = true)
+                        {
+                            nv.TrangThai = 1;
+                        }
+                        else
+                        {
+                            nv.TrangThai = 0;
+                        }
+                        nv.DiaChi = txb_DiaChi.Text;
+                        nv.MaChucVu = _iQLNV.GetLstChucVu().Where(c => c.TenChucVu == cbx_ChucVu.Text).Select(c => c.MaChucVu).FirstOrDefault();
+                        MessageBox.Show(_iQLNV.ThemNV(nv));
+                    _iQLNV.GetDataFromDB();
+                        LoadGrid();
+                    }
                 }
-                if (rbt_KhongHĐ.Checked=true)
-                {
-                    nv.TrangThai = 0;
-                }
-                nv.DiaChi = txb_DiaChi.Text;
-                nv.MaChucVu = _iQLNV.GetLstChucVu().Where(c => c.TenChucVu == cbx_ChucVu.Text).Select(c => c.MaChucVu).FirstOrDefault();
-                MessageBox.Show(_iQLNV.ThemNV(nv));
-                _iQLNV.GetDataFromDB();
-                LoadGrid();
-            }
+            
+         
         }
 
         private void dtgrid_NhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -124,28 +148,39 @@ namespace _3_GUI_PresentationLayer
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có muốn sửa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dr == DialogResult.Yes)
+            try
             {
-                NhanVien nv = _iQLNV.GetLstNhanVien().Where(c => c.Id == _id).FirstOrDefault();
-                nv.TenNhanVien = txb_TenNhanVien.Text;
-                nv.SoCmnd = txb_CMND.Text;
-                nv.NamSinh = Convert.ToInt32(cbx_NamSinh.Text);
-                nv.SoDienThoai = txb_SDTNV.Text;
-                nv.MatKhau = txb_MatKhau.Text;
-                if (rbt_HoatDong.Checked = true)
+                DialogResult dr = MessageBox.Show("Bạn có muốn sửa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
                 {
-                    nv.TrangThai = 1;
+                   
+                   
+                        NhanVien nv = _iQLNV.GetLstNhanVien().Where(c => c.Id == _id).FirstOrDefault();
+                        nv.TenNhanVien = txb_TenNhanVien.Text;
+                        nv.SoCmnd = txb_CMND.Text;
+                        nv.NamSinh = Convert.ToInt32(cbx_NamSinh.Text);
+                        nv.SoDienThoai = txb_SDTNV.Text;
+                        nv.MatKhau = txb_MatKhau.Text;
+                        if (rbt_HoatDong.Checked = true)
+                        {
+                            nv.TrangThai = 1;
+                        }
+                        else
+                        {
+                            nv.TrangThai = 0;
+                        }
+                        nv.DiaChi = txb_DiaChi.Text;
+                        nv.MaChucVu = _iQLNV.GetLstChucVu().Where(c => c.TenChucVu == cbx_ChucVu.Text).Select(c => c.MaChucVu).FirstOrDefault();
+                        MessageBox.Show(_iQLNV.SuaNV(nv));
+                        _iQLNV.GetDataFromDB();
+                        LoadGrid();
+                    
                 }
-                else
-                {
-                    nv.TrangThai = 0;
-                }
-                nv.DiaChi = txb_DiaChi.Text;
-                nv.MaChucVu = _iQLNV.GetLstChucVu().Where(c => c.TenChucVu == cbx_ChucVu.Text).Select(c => c.MaChucVu).FirstOrDefault();
-                MessageBox.Show(_iQLNV.SuaNV(nv));
-                _iQLNV.GetDataFromDB();
-                LoadGrid();
+            }
+            catch (Exception)
+            {
+                DialogResult dm = MessageBox.Show("Sửa thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -186,6 +221,15 @@ namespace _3_GUI_PresentationLayer
         private void tbx_TimKiem_TextChanged(object sender, EventArgs e)
         {
             LoadGridTimKiem(tbx_TimKiem.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txb_CMND.Text = "";
+            txb_DiaChi.Text = "";
+            txb_MatKhau.Text = "";
+            txb_SDTNV.Text = "";
+            txb_TenNhanVien.Text = "";
         }
     }
 }
